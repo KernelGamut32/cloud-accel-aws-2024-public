@@ -1,0 +1,1 @@
+https://learn.acloud.guru/handson/7e6eecaa-283a-46d2-a1ad-8ec41c198250

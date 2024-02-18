@@ -1,0 +1,1 @@
+https://blog.revolve.team/2023/08/02/lets-look-at-cloudformation-loops/

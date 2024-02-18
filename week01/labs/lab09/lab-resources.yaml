@@ -1,0 +1,68 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Metadata:
+    Generator: "former2"
+Description: ""
+Resources:
+    S3Bucket:
+        Type: "AWS::S3::Bucket"
+        Properties:
+            BucketName: "cfst-1909-145a9dd5eb85d9d9de97c971fb8405-s3bucket-194tyrt6wic9p"
+            Tags: 
+              - 
+                Key: "aws:cloudformation:stack-name"
+                Value: "cfst-1909-145a9dd5eb85d9d9de97c971fb8405f2"
+              - 
+                Key: "aws:cloudformation:logical-id"
+                Value: "S3Bucket"
+              - 
+                Key: "aws:cloudformation:stack-id"
+                Value: !Sub "arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/cfst-1909-145a9dd5eb85d9d9de97c971fb8405f2/6b77b8f0-4188-11ee-8626-12081a4484ef"
+              - 
+                Key: "UserId"
+                Value: "18658389"
+            BucketEncryption: 
+                ServerSideEncryptionConfiguration: 
+                  - 
+                    ServerSideEncryptionByDefault: 
+                        SSEAlgorithm: "AES256"
+                    BucketKeyEnabled: false
+            LifecycleConfiguration: 
+                Rules: 
+                  - 
+                    Id: "log-rule"
+                    Status: "Enabled"
+                    Prefix: "Logs"
+                    Transitions: 
+                      - 
+                        TransitionInDays: 90
+                        StorageClass: "STANDARD_IA"
+                  - 
+                    Id: "image-rule"
+                    Status: "Enabled"
+                    Prefix: "Images"
+                    Transitions: 
+                      - 
+                        TransitionInDays: 30
+                        StorageClass: "ONEZONE_IA"
+                  - 
+                    Id: "tagged-logs"
+                    Status: "Enabled"
+                    TagFilters: 
+                      - 
+                        Key: "Type"
+                        Value: "OldLogs"
+                    Transitions: 
+                      - 
+                        TransitionInDays: 180
+                        StorageClass: "DEEP_ARCHIVE"
+            VersioningConfiguration: 
+                Status: "Enabled"
+            OwnershipControls: 
+                Rules: 
+                  - 
+                    ObjectOwnership: "BucketOwnerEnforced"
+            PublicAccessBlockConfiguration: 
+                BlockPublicAcls: true
+                BlockPublicPolicy: true
+                IgnorePublicAcls: true
+                RestrictPublicBuckets: true
