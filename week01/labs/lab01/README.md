@@ -10,7 +10,7 @@
     - Click the radio button next to your Cloud9 environment and click `Open in Cloud9` (it may take a few seconds for the environment to come up)
 * In the provided terminal, clone this repository using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
 * In the project view on the left, navigate to the week 01/lab 01 folder and open `initial-stack.yaml`
-* Update the `TableName` attribute replacing `<initials>` with your initials; **save your changes**
+* Update the `TableName` attribute, replacing `<initials>` with your initials; **save your changes**
 * Push the CloudFormation template to AWS using `aws cloudformation create-stack --stack-name dynamodb --template-body file://./cloud-accel-aws-2024-public/week01/labs/lab01/initial-stack.yaml`
 * Run `aws cloudformation describe-stack-events --stack-name dynamodb` to view the status of the stack creation
 * Navigate to `DynamoDB` to view your newly-created table
