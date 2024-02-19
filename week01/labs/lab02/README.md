@@ -1,6 +1,4 @@
-https://learn.acloud.guru/handson/234d14a4-2051-4ec1-a282-c64493dd47eb
-
-# Lab 01 - [AWS CloudFormation - Condition Functions](https://learn.acloud.guru/handson/234d14a4-2051-4ec1-a282-c64493dd47eb)
+# Lab 02 - [AWS CloudFormation - Condition Functions](https://learn.acloud.guru/handson/234d14a4-2051-4ec1-a282-c64493dd47eb)
 
 **NOTE: Use an A Cloud Guru (ACG) AWS Playground for this lab**
 
