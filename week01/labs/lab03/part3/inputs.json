@@ -1,0 +1,18 @@
+[
+    {
+        "ParameterKey": "ParamA",
+        "ParameterValue": "true"
+    },
+    {
+        "ParameterKey": "ParamB",
+        "ParameterValue": "false"
+    },
+    {
+        "ParameterKey": "ParamC",
+        "ParameterValue": "false"
+    },
+    {
+        "ParameterKey": "ParamD",
+        "ParameterValue": "true"
+    }
+]

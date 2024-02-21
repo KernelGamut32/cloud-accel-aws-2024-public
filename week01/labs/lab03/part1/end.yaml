@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: 2010-09-09
+Transform: 'AWS::LanguageExtensions'
+Resources:
+  'Fn::ForEach::Tables':
+    - TableName
+    - [Points, Score, Name, Leaderboard]
+    - 'DynamoDB${TableName}':
+        Type: 'AWS::DynamoDB::Table'
+        Properties:
+          TableName: !Join [ '-', [ !Ref TableName, '<initials>' ] ]
+          AttributeDefinitions:
+            - AttributeName: id
+              AttributeType: S
+          KeySchema:
+            - AttributeName: id
+              KeyType: HASH
+          ProvisionedThroughput:
+            ReadCapacityUnits: '5'
+            WriteCapacityUnits: '5'
