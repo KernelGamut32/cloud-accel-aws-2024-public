@@ -4,27 +4,28 @@
 
 **If you encounter "no space left on device issues", use https://ryansouthgate.com/aws-cloud9-no-space-left-on-device/#:~:text=There%E2%80%99s%20a%20few%20things%20we%20can%20tackle%20here%2C,clean%20up%20that%20much%20free%20space%20for%20me**
 
+Nested Stacks can use outputs from other stacks within the same group. Exporting an output enables usage of that output in other stacks in the same AWS account and region via import (see https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-imports.html for additional information).
+
 * In the lab environment, create a new Cloud9 environment by navigating to the Cloud9 console and clicking `Create environment`
     - Specify a name for the environment
     - Leave all other options at their defaults, and click `Create`
     - Click the radio button next to your Cloud9 environment and click `Open in Cloud9` (it may take a few seconds for the environment to come up)
 * In the provided terminal, clone this repository using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
-* In the project view on the left, navigate to the week 01/lab 01 folder and open `initial-stack.yaml`
-* Update the `TableName` attribute, replacing `<initials>` with your initials; **save your changes**
-* Push the CloudFormation template to AWS using `aws cloudformation create-stack --stack-name dynamodb --template-body file://./cloud-accel-aws-2024-public/week01/labs/lab01/initial-stack.yaml`
-* Run `aws cloudformation describe-stack-events --stack-name dynamodb` to view the status of the stack creation
-* Navigate to `DynamoDB` to view your newly-created table
-* Navigate to `CloudFormation` to view the details of your stack; review the `Events` tab for details
-* Open `stack-plus-role.yaml` and, once again, replace `<initials>` with your initials; **save your changes**
-* In the terminal, run `aws cloudformation update-stack --stack-name dynamodb --template-body file://./cloud-accel-aws-2024-public/week01/labs/lab01/stack-plus-role.yaml` to apply the updates to the stack
-* You will receive an error - because we are trying to add a "special" type of AWS object (an IAM Role), we need to explicitly call out our need for that capability when executing (in the Management Console, you'd be forced to click a checkbox)
-* In the terminal, run `aws cloudformation update-stack --stack-name dynamodb --template-body file://./cloud-accel-aws-2024-public/week01/labs/lab01/stack-plus-role.yaml --capabilities CAPABILITY_IAM` to successfully apply the updates to the stack
-* Run `aws cloudformation describe-stack-events --stack-name dynamodb` to view the status of the stack creation
-* In `CloudFormation` in the Management Console, you can also watch the progress of your updates
-* Navigate to `IAM` in the Management Console, click `Roles`, and search for `dynamodb` to view the details of the role created with the latest update
-* In `stack-plus-role.yaml`, update `ReadCapacityUnits` from 5 to 10 and update `WriteCapacityUnits` from 5 to 10; **save your changes**
-* Rerun `aws cloudformation update-stack --stack-name dynamodb --template-body file://./cloud-accel-aws-2024-public/week01/labs/lab01/stack-plus-role.yaml --capabilities CAPABILITY_IAM` to apply updates
-* In `CloudFormation` in the Management Console, observe the progress of your updates and explore details about what changes
-* In `DynamoDB` in the MC, you can see the updates to the table reflected in the `Additional settings` tab
-* Run `aws cloudformation delete-stack --stack-name dynamodb` to delete the stack and the underlying resources in AWS
-* Once the operation completes (you can monitor in MC), you can verify that the DynamoDB table has been deleted along with the IAM elements previously created as part of the lab
+* In the project view on the left, navigate to the week 01/lab 06 folder and open `noretain.json` to review the template definition
+* In the project view on the left, navigate to the week 01/lab 06 folder and open `root.json` to review the template definition
+* Push the CloudFormation template to AWS using `aws cloudformation create-stack --stack-name nested-noretain --template-body file://./cloud-accel-aws-2024-public/week01/labs/lab06/root.json`
+* Run `aws cloudformation describe-stack-events --stack-name nested-noretain` to view the status of the stack creation
+
+
+* In the project view on the left, navigate to the week 01/lab 05 folder and open `iam-role.yaml` to review the template definition
+* Push the CloudFormation template to AWS using `aws cloudformation create-stack --stack-name drift --template-body file://./cloud-accel-aws-2024-public/week01/labs/lab05/iam-role.yaml --capabilities CAPABILITY_IAM`
+* Run `aws cloudformation describe-stack-events --stack-name drift` to view the status of the stack creation
+* In a separate tab, using "CloudShell", run `ROLENAME=$(aws cloudformation describe-stack-resources --stack-name drift --query "StackResources[0].PhysicalResourceId" --output text)`
+* In "CloudShell", run `aws iam attach-role-policy --role-name $ROLENAME --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"`
+* In `IAM`, review the set of permissions assigned by the CFT to the role
+* In "CloudShell", run `DRIFT_ID=$(aws cloudformation detect-stack-drift --stack-name drift --query "StackDriftDetectionId" --output text)`
+* In "CloudShell", run `aws cloudformation describe-stack-drift-detection-status --stack-drift-detection-id $DRIFT_ID` and observe results
+* In "CloudShell", run `aws iam detach-role-policy --role-name $ROLENAME --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"`
+* In "CloudShell", rerun `DRIFT_ID=$(aws cloudformation detect-stack-drift --stack-name drift --query "StackDriftDetectionId" --output text)`
+* In "CloudShell", rerun `aws cloudformation describe-stack-drift-detection-status --stack-drift-detection-id $DRIFT_ID` and observe results
+* In the Cloud9 terminal, run `aws cloudformation delete-stack --stack-name drift` to delete the stack and the underlying resources in AWS

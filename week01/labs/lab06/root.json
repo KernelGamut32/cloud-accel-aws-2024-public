@@ -1,0 +1,15 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Resources": {
+        "myStack": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "TemplateBody": "AWS::Include",
+                "Parameters": {
+                    "Location": "file://./noretain.json"
+                },
+                "TimeoutInMinutes": "60"
+            }
+        }
+    }
+}

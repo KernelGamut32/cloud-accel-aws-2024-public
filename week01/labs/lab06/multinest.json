@@ -1,0 +1,19 @@
+{
+    "AWSTemplateFormatVersion" : "2010-09-09",
+    "Resources" : {
+        "myStack" : {
+	       "Type" : "AWS::CloudFormation::Stack",
+	       "Properties" : {
+              "TemplateBody" : "file://./s3static.json",
+              "TimeoutInMinutes" : "60"
+	       }
+        },
+        "myStack2" : {
+            "Type" : "AWS::CloudFormation::Stack",
+            "Properties" : {
+               "TemplateBody" : "file://./noretain.json",
+               "TimeoutInMinutes" : "60"
+            }
+         }    
+    }
+}
