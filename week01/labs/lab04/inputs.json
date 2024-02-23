@@ -1,0 +1,22 @@
+[
+    {
+        "ParameterKey": "RolePrefix",
+        "ParameterValue": "admin"
+    },
+    {
+        "ParameterKey": "RoleName",
+        "ParameterValue": "app-role-<initials>"
+    },
+    {
+        "ParameterKey": "Service",
+        "ParameterValue": "lambda.amazonaws.com"
+    },
+    {
+        "ParameterKey": "PolicyActions",
+        "ParameterValue": "dynamodb:ListTables,dynamodb:Query,dynamodb:GetRecords"
+    },
+    {
+        "ParameterKey": "PolicyResources",
+        "ParameterValue": "*"
+    }
+]

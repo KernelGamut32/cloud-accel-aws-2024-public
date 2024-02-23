@@ -1,0 +1,49 @@
+AWSTemplateFormatVersion: 2010-09-09
+Parameters:
+  RolePrefix:
+    Type: String
+  RoleName:
+    Type: String
+  Service:
+    Type: String
+  PolicyActions:
+    Type: List<String>
+  PolicyResources:
+    Type: List<String>
+Resources:
+  APPONEROLE:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Join [ '-', [ !Ref RolePrefix, !Ref RoleName ] ]
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: AllowAssumeRole
+            Effect: Allow
+            # Using cloud_user (from AWS sandbox in ACG)
+            Principal:
+              AWS:
+                - !Join
+                  - ""
+                  - - "arn:aws:iam::"
+                    - !Ref AWS::AccountId
+                    - ":user/cloud_user"
+              Service:
+                - !Ref Service
+            Action:
+              - "sts:AssumeRole"
+      Path: /
+      Policies:
+        - PolicyName: APPONEROLE
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action: !Ref PolicyActions
+                Resource: !Ref PolicyResources
+  RootInstanceProfile:
+    Type: "AWS::IAM::InstanceProfile"
+    Properties:
+      Path: /
+      Roles:
+        - !Ref APPONEROLE

@@ -35,18 +35,3 @@
 * Run `aws cloudformation describe-stacks --stack-name buckets --query 'Stacks[0].Outputs[*]'` to review the resulting outputs
 * Run `aws cloudformation delete-stack --stack-name buckets` to delete the stack and the underlying resources in AWS
 * Once the operation completes (you can monitor in MC), you can verify that the buckets have been deleted
-
-## Part 3: [AWS CloudFormation - Looping in Conditions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-foreach-example-conditions.html)
-
-* In the project view on the left, navigate to the week 01/lab 02 folder and open `vpc-initial.json`
-* Update the VPC resource name attribute **AND** the tag value, replacing `<initials>` with your initials; **save your changes**
-* Push the CloudFormation template to AWS using `aws cloudformation create-stack --stack-name vpc --template-body file://./cloud-accel-aws-2024-public/week01/labs/lab02/vpc-initial.json`
-* Run `aws cloudformation describe-stack-events --stack-name vpc` to view the status of the stack creation
-* Navigate to `VPC` in the MC to view your newly-created VPC; in the properties, tenancy will show `Dedicated`
-* Open `vpc-with-condition.json` and, once again, replace `<initials>` with your initials; **save your changes**
-* Push the CloudFormation template for the new VPC using `aws cloudformation create-stack --stack-name vpc2 --template-body file://./cloud-accel-aws-2024-public/week01/labs/lab02/vpc-with-condition.json --parameters ParameterKey=Tenancy,ParameterValue=default`
-* Review the new VPC in the MC and notice the tenancy setting
-* In the terminal, run `aws cloudformation update-stack --stack-name vpc2 --template-body file://./cloud-accel-aws-2024-public/week01/labs/lab02/vpc-with-condition.json --parameters ParameterKey=Tenancy,ParameterValue=dedicated` to apply the updates to the stack
-* Review the updates to the VPN in MC
-* Run `aws cloudformation delete-stack --stack-name vpc` and `aws cloudformation delete-stack --stack-name vpc2` to delete the stacks and the underlying resources in AWS
-* Once the operation completes (you can monitor in MC), you can verify that VPCs have been deleted
