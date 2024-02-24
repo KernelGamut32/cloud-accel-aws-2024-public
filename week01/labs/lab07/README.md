@@ -10,7 +10,7 @@
     - Click the radio button next to your Cloud9 environment and click `Open in Cloud9` (it may take a few seconds for the environment to come up)
 * In the provided terminal, clone this repository using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
 * In the provided terminal, open Cloud Shell and clone the repository for the lab using `git clone https://github.com/ACloudGuru-Resources/S3BucketsLabFiles.git`
-* In the project view on the left, navigate to the week 01/lab 06 folder and open `create-buckets.yaml` to review the template definition
+* In the project view on the left, navigate to the week 01/lab 07 folder and open `create-buckets.yaml` to review the template definition
 * Push the CloudFormation template to AWS using `aws cloudformation create-stack --stack-name s3buckets --template-body file://./cloud-accel-aws-2024-public/week01/labs/lab07/create-buckets.yaml`
 * Run `aws cloudformation describe-stack-events --stack-name s3buckets` to view the status of the stack creation
 * Once stack is complete, run `aws s3 ls` to view the buckets
@@ -24,7 +24,7 @@
 * Run `aws cloudformation update-stack --stack-name s3buckets --template-body file://./cloud-accel-aws-2024-public/week01/labs/lab07/create-buckets.yaml` to apply the updates to the stack
 * Run `aws cloudformation describe-stack-events --stack-name s3buckets` to view the status of the stack creation
 * Run `mv ./S3BucketsLabFiles/cat1.jpg ./S3BucketsLabFiles/cat1.jpg.backup` to backup the original file
-* Run `mv ./S3BucketsLabFiles/cat2.jpg ./S3BucketsLabFiles//cat1.jpg` to replace the original file with the new file
+* Run `mv ./S3BucketsLabFiles/cat2.jpg ./S3BucketsLabFiles/cat1.jpg` to replace the original file with the new file
 * Run `ls ./S3BucketsLabFiles` to verify that the file changes are complete
 * Run `aws s3 cp ./S3BucketsLabFiles/cat1.jpg s3://<public-bucket-name>` to add a new version of the file to the S3 bucket
 * Run `aws s3api put-object-acl --bucket <public-bucket-name> --key cat1.jpg --acl public-read` to make the new version accessible
