@@ -9,7 +9,7 @@
     - Leave all other options at their defaults, and click `Create`
     - Click the radio button next to your Cloud9 environment and click `Open in Cloud9` (it may take a few seconds for the environment to come up)
 * In the provided terminal, clone this repository using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
-* In the provided terminal, open Cloud Shell and clone the repository for the lab using `git clone https://github.com/ACloudGuru-Resources/S3BucketsLabFiles.git`
+* In the provided terminal, clone the repository for the lab using `git clone https://github.com/ACloudGuru-Resources/S3BucketsLabFiles.git`
 * In the project view on the left, navigate to the week 01/lab 07 folder and open `create-buckets.yaml` to review the template definition
 * Push the CloudFormation template to AWS using `aws cloudformation create-stack --stack-name s3buckets --template-body file://./cloud-accel-aws-2024-public/week01/labs/lab07/create-buckets.yaml`
 * Run `aws cloudformation describe-stack-events --stack-name s3buckets` to view the status of the stack creation
