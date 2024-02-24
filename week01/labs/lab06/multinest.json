@@ -1,23 +1,23 @@
 {
-    "AWSTemplateFormatVersion" : "2010-09-09",
-    "Resources" : {
-        "NoRetainStack" : {
-            "Type" : "AWS::CloudFormation::Stack",
-            "Properties" : {
-               "TemplateURL" : "https://s3.amazonaws.com/<bucket-name>/noretain.json",
-               "TimeoutInMinutes" : "60"
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Resources": {
+        "NoRetainStack": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "TemplateURL": "https://<bucket-name>.s3.amazonaws.com/noretain.json",
+                "TimeoutInMinutes": "60"
             }
-         },
-        "RetainStack" : {
-            "Type" : "AWS::CloudFormation::Stack",
-            "Properties" : {
-               "TemplateURL" : "https://s3.amazonaws.com/<bucket-name>/s3static.json",
-               "TimeoutInMinutes" : "60"
-            },
-            "Parameters" : {
-                "ErrorPage" : "booboo.html"
+        },
+        "RetainStack": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "TemplateURL": "https://<bucket-name>.s3.amazonaws.com/s3static.json",
+                "TimeoutInMinutes": "60",
+                "Parameters": {
+                    "ErrorPage": "booboo.html"
+                }
             }
-         }    
+        }
     },
     "Outputs": {
         "StackRef": {
@@ -41,6 +41,14 @@
                 ]
             }
         },
+        "NoRetainS3Uri": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "NoRetainStack",
+                    "Outputs.S3Uri"
+                ]
+            }
+        },
         "StackRef": {
             "Value": {
                 "Ref": "RetainStack"
@@ -59,6 +67,14 @@
                 "Fn::GetAtt": [
                     "RetainStack",
                     "Outputs.S3BucketSecureURL"
+                ]
+            }
+        },
+        "RetainS3Uri": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "RetainStack",
+                    "Outputs.S3Uri"
                 ]
             }
         }

@@ -19,16 +19,27 @@ Nested Stacks can use outputs from other stacks within the same group. Exporting
 * Using the bucket name, run `aws s3 cp ./cloud-accel-aws-2024-public/week01/labs/lab06/s3static.json s3://<bucket-name>`
 * In the project view on the left, navigate to the week 01/lab 06 folder and open `root.json` to review the template definition for the first nested stack (parent CFT)
 * Replace `<bucket-name>` in the `TemplateURL` property in `root.json` with your bucket name; **save your changes**
-* Push the CloudFormation template to AWS using `aws cloudformation create-stack --stack-name nested-noretain --template-body file://./cloud-accel-aws-2024-public/week01/labs/lab06/root.json`
-* Run `aws cloudformation describe-stack-events --stack-name nested-noretain` to view the status of the stack creation
-* Using the provided output URL (passthrough from child template to parent template), navigate to `index.html` to view the page
-* Using the provided output URL, navigate to `doh.html` to see the error page
-* In the project view on the left, navigate to the week 01/lab 06 folder and open `multinest.json` to review the template definition for the first nested stack (parent CFT)
+* Push the CloudFormation template to AWS using `aws cloudformation create-stack --stack-name site-stack --template-body file://./cloud-accel-aws-2024-public/week01/labs/lab06/root.json`
+* Run `aws cloudformation describe-stack-events --stack-name site-stack` to view the status of the stack creation
+* Run `aws cloudformation describe-stacks --stack-name site-stack --query 'Stacks[0].Outputs[*]'` to review the resulting outputs
+* Using the output value for `NoRetainS3Uri` (passthrough from child template to parent template), execute `aws s3 cp ./cloud-accel-aws-2024-public/week01/labs/lab06/index.html <NoRetainS3Uri>` and `aws s3 cp ./cloud-accel-aws-2024-public/week01/labs/lab06/error.html <NoRetainS3Uri>`
+* Using the output value for `NoRetainS3SecureURL` (passthrough from child template to parent template), navigate to `index.html` to view the page
+* Using the provided output URL, navigate to `error.html` to see the error page
+* In the project view on the left, navigate to the week 01/lab 06 folder and open `multinest.json` to review the template definition for the second nested stack (parent CFT)
 * Replace `<bucket-name>` in the `TemplateURL` property in `multinest.json` with your bucket name; **save your changes**
-* Push the CloudFormation template to AWS using `aws cloudformation create-stack --stack-name nested-retain --template-body file://./cloud-accel-aws-2024-public/week01/labs/lab06/multinest.json`
-* Run `aws cloudformation describe-stack-events --stack-name nested-retain` to view the status of the stack creation
-* Using the provided output URL (passthrough from child template to parent template), navigate to `index.html` to view the page (in each S3 location)
-* Using the provided output URL, navigate to `doh.html` to see the error page (in each S3 location)
-* Run `aws cloudformation delete-stack --stack-name nested-noretain` to delete the stack and the underlying resources in AWS
-* Run `aws cloudformation delete-stack --stack-name nested-retain` to delete the stack and the underlying resources in AWS
-* Note that for the S3 bucket set for retain, the CloudFormation stack will be deleted but the S3 bucket remains
+* Create a new changeset using `aws cloudformation create-change-set --stack-name site-stack --change-set-name site-updates --template-body file://./cloud-accel-aws-2024-public/week01/labs/lab06/multinest.json`
+* Run `aws cloudformation describe-change-set --stack-name site-stack --change-set-name site-updates` to review the changeset details
+* Run `aws cloudformation execute-change-set --stack-name site-stack --change-set-name site-updates` to execute the changeset (and create/update AWS resources)
+* Run `aws cloudformation describe-stack-events --stack-name site-stack` to view the status of the stack creation resulting from changeset execution
+* Run `aws cloudformation describe-stacks --stack-name site-stack --query 'Stacks[0].Outputs[*]'` to review the resulting outputs
+* Using the output value for `RetainS3Uri` (passthrough from child template to parent template), execute `aws s3 cp ./cloud-accel-aws-2024-public/week01/labs/lab06/index.html <RetainS3Uri>` and `aws s3 cp ./cloud-accel-aws-2024-public/week01/labs/lab06/booboo.html <RetainS3Uri>`
+* Using the output value for `RetainS3SecureURL` (passthrough from child template to parent template), navigate to `index.html` to view the page
+* Using the provided output URL, navigate to `booboo.html` to see the error page
+* Using the output value for `NoRetainS3SecureURL` (passthrough from child template to parent template), verify that `index.html` and `error.html` remain accessible
+* Run `aws cloudformation delete-stack --stack-name site-stack` to delete the stack and the underlying resources in AWS
+* Run `aws cloudformation describe-stack-events --stack-name site-stack` to view the status of the stack creation resulting from changeset execution
+* Run `aws cloudformation describe-stacks --stack-name site-stack --query 'Stacks[0].Outputs[*]'` to review the available outputs again
+* Run `aws s3 rm <NoRetainS3Uri> --recursive` and `aws s3 rm <RetainS3Uri> --recursive` to empty the buckets
+* Rerun `aws cloudformation delete-stack --stack-name site-stack` to delete the stack and the underlying resources in AWS
+* Rerun `aws cloudformation describe-stack-events --stack-name site-stack` to view the status of the stack creation resulting from changeset execution
+* Note that for the S3 bucket set with "retain", the CloudFormation stack will be deleted but the S3 bucket remains

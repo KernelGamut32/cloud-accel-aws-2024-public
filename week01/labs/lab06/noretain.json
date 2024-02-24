@@ -75,6 +75,20 @@
                 ]
             },
             "Description": "Name of S3 bucket to hold website content"
+        },
+        "S3Uri": {
+            "Value": {
+                "Fn::Join": [
+                    "",
+                    [
+                        "s3://",
+                        {
+                            "Ref": "S3Bucket"
+                        }
+                    ]
+                ]
+            },
+            "Description": "S3 URI of the website content"
         }
     }
 }

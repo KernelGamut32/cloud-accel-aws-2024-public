@@ -4,11 +4,8 @@
         "NoRetainStack": {
             "Type": "AWS::CloudFormation::Stack",
             "Properties": {
-                "Type": "AWS::CloudFormation::Stack",
-                "Properties": {
-                    "TemplateURL": "https://s3.amazonaws.com/<bucket-name>/noretain.json",
-                    "TimeoutInMinutes": "60"
-                }
+                "TemplateURL": "https://<bucket-name>.s3.amazonaws.com/noretain.json",
+                "TimeoutInMinutes": "60"
             }
         }
     },
@@ -31,6 +28,14 @@
                 "Fn::GetAtt": [
                     "NoRetainStack",
                     "Outputs.S3BucketSecureURL"
+                ]
+            }
+        },
+        "NoRetainS3Uri": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "NoRetainStack",
+                    "Outputs.S3Uri"
                 ]
             }
         }
