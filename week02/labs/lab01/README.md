@@ -1,32 +1,28 @@
-# Lab 02 - https://learn.acloud.guru/handson/e4e6a251-06af-4046-992b-84f0ece1d3fb
+# Lab 01 - [Securing S3](https://learn.acloud.guru/handson/e4e6a251-06af-4046-992b-84f0ece1d3fb)
 
-Review/highlight https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingEncryption.html and https://www.encryptionconsulting.com/amazon-s3-simple-storage-service-encryption-at-a-glance#:~:text=CMK%2C%20using%20the%20encryption%20algorithm%20%28AES-256%29%2C%20creates%20two,encrypted%20data%20key%20is%20then%20stored%20in%20S3. for additional information. 
+**NOTE: Use an A Cloud Guru (ACG) AWS Playground for this lab**
 
-* Locate S3 service and create a new bucket
-    - Use `mytestbucket-<random characters>` for bucket name
-    - Leave region as is
-    - Note that server-side encryption (under "Default encryption") is enabled by default
-    - Select `Server-side encryption with AWS Key Management Service keys` for encryption type
-    - Click `Choose from your AWS KMS keys`, and choose`aws/s3` (see https://repost.aws/knowledge-center/s3-encrypt-specific-folder for information on `aws/s3` default key)
-    - Leave all other defaults and click "Create bucket"
-    - Master key stored in KMS - used to encrypt data key (which gets stored in S3 with data)
-    - Navigate to KMS and explore (in a new tab)
-        * Look for `aws/s3` in `AWS managed keys` (see https://docs.aws.amazon.com/AmazonS3/latest/userguide/configuring-bucket-key.html for more information on `aws/s3` default key)
-        * Add file to S3 bucket using bucket policy
-        * Navigate to object and review "server-side" settings (review KMS master key ARN); verify that this ARN represents the `aws/s3` key
-    - Create our own master key
-        * In KMS, navigate to "customer managed keys" and create new symmetric key
-        * Add alias - "my_s3_key"
-        * Select `cloud_user` and `admin` as "Key administrators" and click "Next"
-        * Select `cloud_user` and `admin` as "Key users" and click "Next"
-        * Leave all other defaults
-        * Review key policy
-        * Click "Finish"
-    - Add new file to S3 bucket
-        * Upload a different file
-        * Under "Properties" and "Server-side encryption", notice that "Do not specify an encryption key" is selected; this will use bucket default
-        * After upload, review uploaded document and show that still using `aws/s3`
-        * Edit "server-side encryption settings" for bucket, select "override", select "Choose from your AWS KMS keys", and select "my_s3_key" for "choose from your KMS master keys"
-        * Click "Save changes"
-        * Review new KMS master key ARN under server-side encryption settings for uploaded document
-        * Verify that the ARN matches `my_s3_key` in KMS
+**If you encounter "no space left on device issues", use https://ryansouthgate.com/aws-cloud9-no-space-left-on-device/#:~:text=There%E2%80%99s%20a%20few%20things%20we%20can%20tackle%20here%2C,clean%20up%20that%20much%20free%20space%20for%20me**
+
+Review/highlight https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingEncryption.html and https://www.encryptionconsulting.com/amazon-s3-simple-storage-service-encryption-at-a-glance. for additional information.
+
+As part of this lab, we will also review Former2 (https://former2.com/).
+
+* In the lab environment, create a new Cloud9 environment by navigating to the Cloud9 console and clicking `Create environment` (or reuse a previously-created environment)
+    - Specify a name for the environment
+    - Leave all other options at their defaults, and click `Create`
+    - Click the radio button next to your Cloud9 environment and click `Open in Cloud9` (it may take a few seconds for the environment to come up)
+* In the provided terminal, clone this repository using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
+* In the project view on the left, navigate to the week 02/lab 01 folder and open `secured-bucket.yaml` to review the template definition
+* Push the CloudFormation template to AWS using `aws cloudformation create-stack --stack-name secured-s3 --template-body file://./cloud-accel-aws-2024-public/week02/labs/lab01/secured-bucket.yaml`
+* Run `aws cloudformation describe-stack-events --stack-name secured-s3` to view the status of the stack creation
+* Navigate to `S3` and review the new bucket's configuration
+* Navigate to `KMS` and explore (in a new tab)
+    - Look for `aws/s3` in `AWS managed keys` (see https://repost.aws/knowledge-center/s3-encrypt-specific-folder and https://docs.aws.amazon.com/AmazonS3/latest/userguide/configuring-bucket-key.html for more information on `aws/s3` default key)
+    - Review `Key policy` and `Cryptographic configuration`
+    - Add file to S3 bucket using bucket policy
+    - Navigate to the object and review `Server-side encryption settings` (review encryption key ARN); verify that this ARN matches to the `aws/s3` key
+* In the project view on the left, navigate to the week 02/lab 01 folder and open `secured-bucket-with-kms.yaml` to review the template definition
+* Push the CloudFormation template to AWS using `aws cloudformation update-stack --stack-name secured-s3 --template-body file://./cloud-accel-aws-2024-public/week02/labs/lab01/secured-bucket-with-kms.yaml --parameters ParameterKey=CloudUser,ParameterValue="cloud_user" ParameterKey=KeyAlias,ParameterValue="alias/super-duper-secret-key"`
+* Run `aws cloudformation describe-stack-events --stack-name secured-s3` to view the status of the stack creation
+* Add a second file to the bucket and verify that the first object is still using the AWS Managed Key and that the second object is using your Customer Managed Key

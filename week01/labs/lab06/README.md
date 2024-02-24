@@ -6,7 +6,7 @@
 
 Nested Stacks can use outputs from other stacks within the same group. Exporting an output enables usage of that output in other stacks in the same AWS account and region via import (see https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-imports.html for additional information).
 
-* In the lab environment, create a new Cloud9 environment by navigating to the Cloud9 console and clicking `Create environment`
+* In the lab environment, create a new Cloud9 environment by navigating to the Cloud9 console and clicking `Create environment` (or reuse a previously-created environment)
     - Specify a name for the environment
     - Leave all other options at their defaults, and click `Create`
     - Click the radio button next to your Cloud9 environment and click `Open in Cloud9` (it may take a few seconds for the environment to come up)
