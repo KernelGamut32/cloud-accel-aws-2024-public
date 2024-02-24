@@ -1,19 +1,66 @@
 {
     "AWSTemplateFormatVersion" : "2010-09-09",
     "Resources" : {
-        "myStack" : {
-	       "Type" : "AWS::CloudFormation::Stack",
-	       "Properties" : {
-              "TemplateBody" : "file://./s3static.json",
-              "TimeoutInMinutes" : "60"
-	       }
-        },
-        "myStack2" : {
+        "NoRetainStack" : {
             "Type" : "AWS::CloudFormation::Stack",
             "Properties" : {
-               "TemplateBody" : "file://./noretain.json",
+               "TemplateURL" : "https://s3.amazonaws.com/<bucket-name>/noretain.json",
                "TimeoutInMinutes" : "60"
             }
+         },
+        "RetainStack" : {
+            "Type" : "AWS::CloudFormation::Stack",
+            "Properties" : {
+               "TemplateURL" : "https://s3.amazonaws.com/<bucket-name>/s3static.json",
+               "TimeoutInMinutes" : "60"
+            },
+            "Parameters" : {
+                "ErrorPage" : "booboo.html"
+            }
          }    
+    },
+    "Outputs": {
+        "StackRef": {
+            "Value": {
+                "Ref": "NoRetainStack"
+            }
+        },
+        "NoRetainS3WebsiteURL": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "NoRetainStack",
+                    "Outputs.WebsiteURL"
+                ]
+            }
+        },
+        "NoRetainS3SecureURL": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "NoRetainStack",
+                    "Outputs.S3BucketSecureURL"
+                ]
+            }
+        },
+        "StackRef": {
+            "Value": {
+                "Ref": "RetainStack"
+            }
+        },
+        "RetainS3WebsiteURL": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "RetainStack",
+                    "Outputs.WebsiteURL"
+                ]
+            }
+        },
+        "RetainS3SecureURL": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "RetainStack",
+                    "Outputs.S3BucketSecureURL"
+                ]
+            }
+        }
     }
 }

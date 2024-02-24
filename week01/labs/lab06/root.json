@@ -1,14 +1,37 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
     "Resources": {
-        "myStack": {
+        "NoRetainStack": {
             "Type": "AWS::CloudFormation::Stack",
             "Properties": {
-                "TemplateBody": "AWS::Include",
-                "Parameters": {
-                    "Location": "file://./noretain.json"
-                },
-                "TimeoutInMinutes": "60"
+                "Type": "AWS::CloudFormation::Stack",
+                "Properties": {
+                    "TemplateURL": "https://s3.amazonaws.com/<bucket-name>/noretain.json",
+                    "TimeoutInMinutes": "60"
+                }
+            }
+        }
+    },
+    "Outputs": {
+        "StackRef": {
+            "Value": {
+                "Ref": "NoRetainStack"
+            }
+        },
+        "NoRetainS3WebsiteURL": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "NoRetainStack",
+                    "Outputs.WebsiteURL"
+                ]
+            }
+        },
+        "NoRetainS3SecureURL": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "NoRetainStack",
+                    "Outputs.S3BucketSecureURL"
+                ]
             }
         }
     }

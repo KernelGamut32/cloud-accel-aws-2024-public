@@ -1,5 +1,11 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
+    "Parameters": {
+        "ErrorPage": {
+            "Type": "String",
+            "Description": "Filename of error page to use in static website"
+        }
+    },
     "Resources": {
         "S3Bucket": {
             "Type": "AWS::S3::Bucket",
@@ -12,7 +18,7 @@
                 },
                 "WebsiteConfiguration": {
                     "IndexDocument": "index.html",
-                    "ErrorDocument": "error.html"
+                    "ErrorDocument": { "Ref" : "ErrorPage" }
                 }
             },
             "DeletionPolicy": "Retain"
