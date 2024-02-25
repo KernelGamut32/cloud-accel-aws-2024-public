@@ -1,120 +1,112 @@
-# Lab 02 - https://docs.aws.amazon.com/codebuild/latest/userguide/getting-started.html
+# Lab 05 - https://aws.amazon.com/blogs/apn/using-gitlab-ci-cd-pipeline-to-deploy-aws-sam-applications/
 
-Follow along with steps outlined in tutorial in a Cloud9 environment created within ACG sandbox.
+**See: https://docs.gitlab.com/ee/ci/yaml/gitlab_ci_yaml.html and https://docs.gitlab.com/ee/ci/yaml/index.html for additional information on the syntax used in the `.gitlab-ci.yml` file**
 
-* Don't forget package names in .java files (e.g., `package main.java;` and `package test.java;`); also, don't forget to import the `MessageUtil` class in `TestMessageUtil.java`
-* Use the following for initial version of `MessageUtil.java`:
+* Execute in a Cloud9 environment in an ACG sandbox host
+* Create a new project in GitLab (I used public) but **do not initialize with a README** (I used `gitlabci-lab` for project name)
+* Execute the following: `sam init -r python3.8 -n <repository name> --app-template "hello-world"`
+* You do not need to enable XRay and you do not want to enable app insights (if you're running in an ACG sandbox)
+* Navigate to the newly-created folder in a terminal
+* **NOTE: If running in Cloud9, you can use link in GitLab for info on running and storing a new SSH key using `ssh-keygen`; add the public key to GitLab**
+  * Execute `ssh-keygen -t ed25519 -C "<comment>"` to generate a new SSH key in the default location in Cloud9 (`~/.ssh/`)
+  * Run `cat ~/.ssh/id_ed25519.pub` to display the public key; copy the results into GitLab to generate a new SSH key
+* Execute `git init --initial-branch=main`
+* Execute `git remote add origin <remote repository URL>`
+* Execute `git add .`
+* Execute `git commit -m "Initial commit"`
+* Execute `git push -u origin main`
+* Test SAM locally
+  * Run `sam build --use-container` to build the project
+  * Run `sam local invoke HelloWorldFunction -e events/event.json` to test the function locally
+  * Test the API gateway using `sam local start-api` and then `curl http://localhost:3000/hello`
+* Add the build pipeline - in the project root, create a new `.gitlab-ci.yml` file and copy/paste the following (**you'll need to adjust from what's in the article**)
+
 ```
-package main.java;
+image: python:3.8
 
-public class MessageUtil {
-  private String message;
+stages:
+  - deploy
 
-  public MessageUtil(String message) {
-    this.message = message;
-  }
+production:
+  stage: deploy
+  before_script:
+    - pip3 install awscli --upgrade
+    - pip3 install aws-sam-cli --upgrade
+  script:
+    - sam build
+    - sam deploy --stack-name <project name> --no-confirm-changeset --no-fail-on-empty-changeset --resolve-s3 --capabilities CAPABILITY_IAM --region us-east-1
+  environment: production
+```
 
-  public String printMessage() {
-    System.out.println(message);
-    return message;
-  }
+* Integrate and verify the build
+  * For the project in GitLab, under "Settings" | "CI/CD" | "Variables", set the "AWS_ACCESS_KEY_ID" and "AWS_SECRET_ACCESS_KEY" variables to the values for the `cloud_user` account (or whatever AWS account you are using)
+  * Push the updated `.gitlab-ci.yml` file to the repository and observe build progress
+  * Confirm successful build and test the deployed application through the API gateway URL (it should show as an output from the pipeline run)
 
-  public String salutationMessage() {
-    message = "Hi!" + message;
-    System.out.println(message);
-    return message;
-  }
-}
-```
-* Use the following for initial version of `TestMessageUtil.java`:
-```
-package test.java;
+* Verify automatic test run locally
+  * In the project root, run `pip install -r tests/requirements.txt` to install the test dependencies
+  * In the project root, run `AWS_SAM_STACK_NAME=<project name> pytest` to run the tests locally and verify that all pass successfully
 
-import org.junit.Test;
-import org.junit.Ignore;
-import static org.junit.Assert.assertEquals;
-import main.java.MessageUtil;
+* Add a test stage to the pipeline
+  * Add a new environment variable called `AWS_SAM_STACK_NAME` with the value of the project name to the GitLab project
+  * Update `client = boto3.client("cloudformation")` in tests/integration/test_api_gateway.py to `client = boto3.client("cloudformation", region_name="us-east-1")`
+  * Update the `.gitlab-ci.yml` file to the following:
 
-public class TestMessageUtil {
+```
+image: python:3.8
 
-  String message = "Robert";
-  MessageUtil messageUtil = new MessageUtil(message);
-   
-  @Test
-  public void testPrintMessage() {      
-    System.out.println("Inside testPrintMessage()");     
-    assertEquals(message,messageUtil.printMessage());
-  }
+stages:
+  - build
+  - unit_test
+  - deploy
+  - integration_test
 
-  @Test
-  public void testSalutationMessage() {
-    System.out.println("Inside testSalutationMessage()");
-    message = "Hi!" + "Robert";
-    assertEquals(message,messageUtil.salutationMessage());
-  }
-}
-```
-* Use the following for `pom.xml`:
-```
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>org.example</groupId>
-    <artifactId>messageUtil</artifactId>
-    <version>1.0</version>
-    <packaging>jar</packaging>
-    <name>Message Utility Java Sample App</name>
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-</project>
-```
-* Use the following for `buildspec.yml`:
-```
-version: 0.2
+build-code-job:
+  stage: build
+  before_script:
+    - echo "Prepping for build"
+    - pip3 install awscli --upgrade
+    - pip3 install aws-sam-cli --upgrade
+  script:
+    - echo "Building the project"
+    - sam build
 
-phases:
-  install:
-    runtime-versions:
-      java: corretto17
-  pre_build:
-    commands:
-      - echo Nothing to do in the pre_build phase...
-  build:
-    commands:
-      - echo Build started on `date`
-      - mvn install
-  post_build:
-    commands:
-      - echo Build completed on `date`
-artifacts:
-  files:
-    - target/messageUtil-1.0.jar
+unit-test-code-job:
+  stage: unit_test
+  before_script:
+    - echo "Prepping for unit tests"
+    - pip3 install -r tests/requirements.txt
+  script:
+    - echo "Running unit test suite"
+    - pytest tests/unit/test_handler.py
+
+deploy-code-job:
+  stage: deploy
+  before_script:
+    - echo "Prepping for deploy"
+    - pip3 install awscli --upgrade
+    - pip3 install aws-sam-cli --upgrade
+  script:
+    - echo "Deploying code to AWS"
+    - sam deploy --stack-name gitlabci-lab --no-confirm-changeset --no-fail-on-empty-changeset --resolve-s3 --capabilities CAPABILITY_IAM --region us-east-1
+  environment: production
+
+integration-test-code-job:
+  stage: integration_test
+  before_script:
+    - echo "Prepping for integration tests"
+    - pip3 install -r tests/requirements.txt
+  script:
+    - echo "Running integration test suite"
+    - pytest tests/integration/test_api_gateway.py
 ```
-* You can validate local build in Cloud9 by installing Maven (`sudo yum -y install maven`) and running `mvn clean package` in the project directory
-* Navigate to the folder where your project is stored and use `zip -r MessageUtil.zip .` to create zip file for upload to S3; it is important that the zip file be created with `zip` vs `tar`
-* Use the following to upload the .zip file to S3:
-```
-aws s3 ls
-aws s3 mb s3://<bucket-name>-input
-aws s3 mb s3://<bucket-name>-output
-aws s3 cp MessageUtil.zip s3://<bucket-name>-input/MessageUtil.zip
-```
-* Use https://former2 to view the CloudFormation template for the CodeBuild project
+
+* Push the updates to the repository and observe the pipeline run
+* Confirm that each stage runs successfully
+* Make a small change to the lambda code and push the changes to the repository
+* Note that the test stage runs automatically and that the pipeline fails because the test fails
+* Note also that previous version of application is still accessible
+* Fix the test(s) and push the changes to the repository
+* Verify a successful build
+
+**See https://docs.gitlab.com/ee/tutorials/create_register_first_runner/ for an example of how to create and use a GitLab runner**

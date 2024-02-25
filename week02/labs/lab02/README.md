@@ -1,38 +1,46 @@
-# Lab 03 - https://learn.acloud.guru/handson/f3a6e65f-261a-4337-816f-5875ed4dd3e7
+# Lab 02 - [Amazon GuardDuty](https://learn.acloud.guru/handson/f3a6e65f-261a-4337-816f-5875ed4dd3e7)
 
-**NOTE: See https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html for additional information on Amazon GuardDuty.**
+See https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html for additional information on Amazon GuardDuty.
 
-* Create a GuardDuty role to allow for integration with other AWS services
-    - Navigate to IAM
-    - Create a new role under "Roles"
-    - Choose "AWS Service" and select "GuardDuty" as the service that will use this role
-    - Review default policy applied
-    - Leave all other defaults and create new role
-    - Search for new role using "GuardDuty" as search string, review role details (including maximum session duration) - remember roles are intended to be temporary
-* Configure an S3 bucket for GuardDuty to export to
-    - Navigate to GuardDuty landing page and choose "Get Started"
-    - Enable GuardDuty
-    - Navigate to "Settings"
-        * Review service roles (matches to role just created)
-        * Configure "findings export options" using "Configure now"
-        * Change 6 hours update to 15 minutes (more granular to help see issues) for "Frequency"
-        * Configure the S3 bucket for findings; use "New bucket" with a name of `guardduty<randomnumbers>`
-        * Create a prefix called `/findings` for hierarchical organization of results
-        * Click "Go to KMS console to create a new key" and create a key (in a new tab in KMS)
-        * Create a symmetric key, review advanced options (leave defaults)
-        * Give key name of `guarddutyfindings`, click "Next"
-        * Add "cloud_user", "admin", and GuardDuty role as key administrators
-        * Do same for key usage permissions
-        * Update key policy to allow GuardDuty to use the key
-            - Go back to GuardDuty screen, click "View Policy", and copy the policy detail (select all)
-            - Paste into the key policy, appending to the existing policy (within [] collection)
-            - Click "Finish"
-        * Refresh S3 bucket settings (click refresh icon) in GuardDuty and select "guarddutyfindings" key
-        * Click "Save"
-* Generate sample findings and confirm
-    - Click "Generate sample findings" and navigate to "Findings" to view data
-    - Notice the different severities
-    - Review details of first item and available options, action, actors, etc.
-    - Check different severity levels in GuardDuty
-    - Navigate to S3 bucket and review contents (it may take a couple of minutes)
-    - Drill into the hierarchy to see the data
+* Use the provided ACG lab environment - this will be a manual configuration using the Management Console
+* In the MC, navigate to `IAM` and click `Roles` to create a new role
+* Make sure `AWS Service` is selected and choose `GuardDuty` from the service/use case dropdown; verify that `GuardDuty` is selected under "Use case"
+* Click `Next`
+* Expand the provided policy and review the policy definition. It seems overly broad - why do you think it's configured that way?
+* Click `Next` and `Create role`
+* Verify that the new role exists
+* In a separate tab, navigate to `S3` to create a new bucket for housing the `GuardDuty` findings
+* Click `Create bucket`; give your new bucket a unique name (you can use `guarddutyfindings-<initials>-<currentdate>`, making sure to use only lowercase letters, numbers, and dashes)
+* Leave all other settings at their defaults and click `Create bucket`
+* Once creation is complete, click the bucket link, click `Properties` and copy the bucket's ARN
+* In a separate tab, navigate to `KMS` to create a new key for encrypting/decrypting `GuardDuty` findings detail that will be placed in the bucket
+* Click `Create key`
+* Review the settings (but leave at their defaults); click `Next`
+* Give your new key a unique alias (you can include a combination of initials and/or current date)
+* Click `Next`
+* Under `Key administrators`, select `cloud_user`, `admin`, and search for `guardduty`; select the `GuardDuty` role as well
+* Click `Next`
+* Repeat for `Key users` and click `Next`
+* Click `Finish`
+* Once creation is complete, click the key link, and copy the key's ARN
+* Leave tabs open for both `S3` and `KMS` as we will need to attach specific policies for `GuardDuty` to the bucket and key we created
+* In a separate tab, navigate to `GuardDuty`
+* Click `Get Started` and `Enable GuardDuty`
+* Click `Settings` in the left menu
+* Under `Frequency`, click `Edit` and update to `15 minutes`; click `Save changes`
+* Under `S3 bucket`, click `Configure now`
+* For `S3 bucket ARN`, paste in the ARN from the bucket copied in the earlier step
+* For `KMS key ARN`, paste in the ARN from the key copied in the earlier step
+* Under `Attach policy` and `S3 bucket`, click `View policy for S3 bucket`; click `Copy`
+* In `S3`, find `Bucket policy` under your previously-created bucket's `Permissions` tab, click `Edit`, and paste in the policy
+* Click `Save changes`
+* Back in `GuardDuty`, under `Attach policy` and `KMS key`, click `View policy for KMS key`; click `Copy`
+* In `KMS`, find `Key policy` under your previously-created key's settings, click `Switch to policy view`, and click `Edit`
+* Under `Key policy`, find the last `}` before the closing `]`; add a comma, hit enter, and paste in the policy snippet copied from `GuardDuty`
+* Click `Save changes`; review the resulting policy to ensure it is formatted correctly
+* In `GuardDuty`, click `Save` to update the bucket and encryption configuration
+* In `Settings`, under `Sample findings`, click `Generate sample findings`
+* Navigate to `Findings` in the left menu to explore the types of information that `GuardDuty` will provide
+* After a few minutes, you should be able to navigate to your previously-created bucket and drilldown into the findings details
+* For a given object in the bucket, if you review the `Server-side encryption settings`, you should see your previously-created key being used for encrypting/decrypting the bucket objects
+* There is also an API (https://docs.aws.amazon.com/pdfs/guardduty/latest/APIReference/guardduty-api.pdf) that can be used for programmatically integrating with `GuardDuty`
