@@ -1,5 +1,6 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
+
 Resources:
   NotifierFunction:
     Type: AWS::Serverless::Function
@@ -10,8 +11,7 @@ Resources:
       Timeout: 30
       Environment:
         Variables:
-          URL:
-            Fn::Sub: https://${TaskTokenApi}.execute-api.${AWS::Region}.amazonaws.com/Prod
+          URL: !Sub "https://${TaskTokenApi}.execute-api.${AWS::Region}.amazonaws.com/Prod"
       Policies:
         - Statement:
             - Sid: SendEmail
@@ -19,6 +19,7 @@ Resources:
               Action:
                 - ses:SendEmail
               Resource: "*"
+
   MyStepFunctionsStateMachine:
     Type: AWS::StepFunctions::StateMachine
     Properties:
@@ -52,7 +53,8 @@ Resources:
                     "Payload":{
                       "latency.$":"$.latencyMs",
                       "team_alias":"engineering@example.com",
-                      "token.$":"$$.Task.Token"
+                      "token.$":"$$.Task.Token",
+                      "sender":"no-reply@example.com"
                     }
                  },
                  "Catch": [ {
@@ -69,7 +71,8 @@ Resources:
                     "Payload":{  
                        "accuracy.$":"$.accuracypct",
                        "team_alias":"research@example.com",
-                       "token.$":"$$.Task.Token"
+                       "token.$":"$$.Task.Token",
+                       "sender":"no-reply@example.com"
                     }
                  },
                  "Catch": [ {
@@ -88,6 +91,7 @@ Resources:
             }
           }
         }
+
   TaskTokenApi:
     Type: AWS::ApiGateway::RestApi
     Properties:
@@ -96,37 +100,27 @@ Resources:
   SuccessResource:
     Type: AWS::ApiGateway::Resource
     Properties:
-      ParentId:
-        Ref: TokenResource
-      PathPart: success
-      RestApiId:
-        Ref: TaskTokenApi
+      ParentId: !Ref TokenResource
+      PathPart: "success"
+      RestApiId: !Ref TaskTokenApi
   FailResource:
     Type: AWS::ApiGateway::Resource
     Properties:
-      ParentId:
-        Ref: TokenResource
-      PathPart: fail
-      RestApiId:
-        Ref: TaskTokenApi
+      ParentId: !Ref TokenResource
+      PathPart: "fail"
+      RestApiId: !Ref TaskTokenApi
   TokenResource:
     Type: AWS::ApiGateway::Resource
     Properties:
-      ParentId:
-        Fn::GetAtt:
-          - TaskTokenApi
-          - RootResourceId
+      ParentId: !GetAtt TaskTokenApi.RootResourceId
       PathPart: "{token}"
-      RestApiId:
-        Ref: TaskTokenApi
+      RestApiId: !Ref TaskTokenApi
   SuccessMethod:
     Type: AWS::ApiGateway::Method
     Properties:
       HttpMethod: GET
-      ResourceId:
-        Ref: SuccessResource
-      RestApiId:
-        Ref: TaskTokenApi
+      ResourceId: !Ref SuccessResource
+      RestApiId: !Ref TaskTokenApi
       AuthorizationType: NONE
       MethodResponses:
         - ResponseParameters:
@@ -135,33 +129,32 @@ Resources:
       Integration:
         IntegrationHttpMethod: POST
         Type: AWS
-        Credentials:
-          Fn::GetAtt:
-            - APIGWRole
-            - Arn
-        Uri:
-          Fn::Sub: arn:aws:apigateway:${AWS::Region}:states:action/SendTaskSuccess
+        Credentials: !GetAtt APIGWRole.Arn
+        Uri: !Sub "arn:aws:apigateway:${AWS::Region}:states:action/SendTaskSuccess"
         IntegrationResponses:
           - StatusCode: 200
             ResponseTemplates:
-              application/json: "{}\n"
+              application/json: |
+                {}
           - StatusCode: 400
             ResponseTemplates:
-              application/json: "{\"uhoh\": \"Spaghetti O's\"}\n"
+              application/json: |
+                {"uhoh": "Spaghetti O's"}
         RequestTemplates:
-          application/json:
-            "#set($token=$input.params('token'))\n{\n  \"taskToken\"\
-            : \"$util.base64Decode($token)\",\n  \"output\": \"{}\"\n}\n"
+          application/json: |
+            #set($token=$input.params('token'))
+            {
+              "taskToken": "$util.base64Decode($token)",
+              "output": "{}"
+            }
         PassthroughBehavior: NEVER
-      OperationName: TokenResponseSuccess
+      OperationName: "TokenResponseSuccess"
   FailMethod:
     Type: AWS::ApiGateway::Method
     Properties:
       HttpMethod: GET
-      ResourceId:
-        Ref: FailResource
-      RestApiId:
-        Ref: TaskTokenApi
+      ResourceId: !Ref FailResource
+      RestApiId: !Ref TaskTokenApi
       AuthorizationType: NONE
       MethodResponses:
         - ResponseParameters:
@@ -170,50 +163,53 @@ Resources:
       Integration:
         IntegrationHttpMethod: POST
         Type: AWS
-        Credentials:
-          Fn::GetAtt:
-            - APIGWRole
-            - Arn
-        Uri:
-          Fn::Sub: arn:aws:apigateway:${AWS::Region}:states:action/SendTaskFailure
+        Credentials: !GetAtt APIGWRole.Arn
+        Uri: !Sub "arn:aws:apigateway:${AWS::Region}:states:action/SendTaskFailure"
         IntegrationResponses:
           - StatusCode: 200
             ResponseTemplates:
-              application/json: "{}\n"
+              application/json: |
+                {}
           - StatusCode: 400
             ResponseTemplates:
-              application/json: "{\"uhoh\": \"Spaghetti O's\"}\n"
+              application/json: |
+                {"uhoh": "Spaghetti O's"}
         RequestTemplates:
-          application/json:
-            "#set($token=$input.params('token'))\n{\n   \"cause\"\
-            : \"Failed Manual Approval\",\n   \"error\": \"HandledError\",\n   \"\
-            output\": \"{}\",\n   \"taskToken\": \"$util.base64Decode($token)\"\n\
-            }\n"
+          application/json: |
+            #set($token=$input.params('token'))
+            {
+               "cause": "Failed Manual Approval",
+               "error": "HandledError",
+               "output": "{}",
+               "taskToken": "$util.base64Decode($token)"
+            }
         PassthroughBehavior: NEVER
-      OperationName: TokenResponseFail
+      OperationName: "TokenResponseFail"
+
   APIDeployment:
     Type: AWS::ApiGateway::Deployment
     DependsOn:
       - FailMethod
       - SuccessMethod
     Properties:
-      Description: Prod Stage
+      Description: "Prod Stage"
       RestApiId:
         Ref: TaskTokenApi
       StageName: Prod
+
   APIGWRole:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
-          - Effect: Allow
+          - Effect: "Allow"
             Principal:
               Service:
-                - apigateway.amazonaws.com
+                - "apigateway.amazonaws.com"
             Action:
-              - sts:AssumeRole
-      Path: /
+              - "sts:AssumeRole"
+      Path: "/"
       Policies:
         - PolicyName: root
           PolicyDocument:
@@ -221,22 +217,22 @@ Resources:
             Statement:
               - Effect: Allow
                 Action:
-                  - states:SendTaskSuccess
-                  - states:SendTaskFailure
+                  - "states:SendTaskSuccess"
+                  - "states:SendTaskFailure"
                 Resource: "*"
   SFnRole:
-    Type: AWS::IAM::Role
+    Type: "AWS::IAM::Role"
     Properties:
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
-          - Effect: Allow
+          - Effect: "Allow"
             Principal:
               Service:
-                - states.amazonaws.com
+                - "states.amazonaws.com"
             Action:
-              - sts:AssumeRole
-      Path: /
+              - "sts:AssumeRole"
+      Path: "/"
       Policies:
         - PolicyName: root
           PolicyDocument:
@@ -244,8 +240,5 @@ Resources:
             Statement:
               - Effect: Allow
                 Action:
-                  - lambda:InvokeFunction
-                Resource:
-                  Fn::GetAtt:
-                    - NotifierFunction
-                    - Arn
+                  - "lambda:InvokeFunction"
+                Resource: !GetAtt NotifierFunction.Arn

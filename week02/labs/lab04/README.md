@@ -16,9 +16,18 @@
 * In the project view on the left, navigate to the week 02/lab 04 folder and open `codepipeline.yaml` to review the template definition
 * Push the CloudFormation template to AWS using `aws cloudformation create-stack --stack-name code-pipeline-lab --parameters file://./cloud-accel-aws-2024-public/week02/labs/lab04/inputs.json --template-body file://./cloud-accel-aws-2024-public/week02/labs/lab04/codepipeline.yaml --capabilities CAPABILITY_IAM`
 * Run `aws cloudformation describe-stack-events --stack-name code-pipeline-lab` to view the status of the stack creation
+* In the project view on the left, navigate to the week 02/lab 04 folder and open `approval.yaml` to review the template definition
+* Package the approval step function using `aws cloudformation package --template-file ./cloud-accel-aws-2024-public/week02/labs/lab04/approval.yaml --s3-bucket <bucket-name> --output-template-file ./cloud-accel-aws-2024-public/week02/labs/lab04/workflow-template.yaml`
 * In the project view on the left, navigate to the week 02/lab 04 folder and open `workflow-template.yaml` to review the template definition
 * Deploy the approval step function using `aws cloudformation deploy --template-file ./cloud-accel-aws-2024-public/week02/labs/lab04/workflow-template.yaml --stack-name approval-step-function --capabilities CAPABILITY_IAM`
-* Run `aws cloudformation describe-stack-events --stack-name approval-step-function` to view the status of the stack creation
+* Review all resources created via CFT:
+  - Bucket that ends in `-capdelta`
+  - Roles created for CodePipeline and CodeBuild
+  - CodeCommit repository
+  - CodeBuild project and CodePipeline pipeline
+  - Notifier Lambda
+  - The Step Functions state machine
+  - API Gateway used to process approval or rejection in the pipeline flow
 * Navigate to the Simple Email Service instance created by the CFT and add two **different** email addresses that you have access to under `Verified Identities`
 * Access the email sent to those addresses to verify
 * In the MC, navigate to the approval Step Function and click "Edit"
