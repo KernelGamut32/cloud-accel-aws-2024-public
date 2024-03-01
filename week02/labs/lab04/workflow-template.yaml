@@ -1,60 +1,93 @@
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Resources:
   NotifierFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://cp-lab-sourcecode2134234ddfsdf/006b381e81783fd1456ed37ce904920d
+      CodeUri: email_sender/
       Handler: app.lambda_handler
-      Runtime: python3.7
+      Runtime: python3.11
       Timeout: 30
       Environment:
         Variables:
           URL:
             Fn::Sub: https://${TaskTokenApi}.execute-api.${AWS::Region}.amazonaws.com/Prod
       Policies:
-      - Statement:
-        - Sid: SendEmail
-          Effect: Allow
-          Action:
-          - ses:SendEmail
-          Resource: '*'
+        - Statement:
+            - Sid: SendEmail
+              Effect: Allow
+              Action:
+                - ses:SendEmail
+              Resource: "*"
   MyStepFunctionsStateMachine:
     Type: AWS::StepFunctions::StateMachine
     Properties:
-      RoleArn:
-        Fn::GetAtt:
-        - SFnRole
-        - Arn
-      DefinitionString:
-        Fn::Sub: "{\n  \"Comment\": \"A Hello World example of the Amazon States Language\
-          \ using Pass states\",\n  \"StartAt\": \"ChoiceState\",\n  \"States\": {\n\
-          \    \"ChoiceState\": {\n      \"Type\": \"Choice\",\n      \"Choices\"\
-          : [\n        {\n          \"Variable\": \"$.accuracypct\",\n          \"\
-          NumericLessThan\": 96,\n          \"Next\": \"ResearchApproval\"\n     \
-          \   },\n        {\n          \"Variable\": \"$.latencyMs\",\n          \"\
-          NumericGreaterThan\": 80,\n          \"Next\": \"EngineeringApproval\"\n\
-          \        }\n      ],\n      \"Default\": \"SuccessState\"\n    },\n    \"\
-          EngineeringApproval\": {\n         \"Type\":\"Task\",\n         \"Resource\"\
-          :\"arn:aws:states:::lambda:invoke.waitForTaskToken\",\n         \"Parameters\"\
-          :{  \n            \"FunctionName\":\"${NotifierFunction.Arn}\",\n      \
-          \      \"Payload\":{\n              \"latency.$\":\"$.latencyMs\",\n   \
-          \           \"team_alias\":\"engineering@example.com\",\n              \"\
-          token.$\":\"$$.Task.Token\",\n              \"sender\":\"no-reply@example.com\"\
-          \n            }\n         },\n         \"Catch\": [ {\n            \"ErrorEquals\"\
-          : [\"HandledError\"],\n            \"Next\": \"FailState\"\n         } ],\n\
-          \      \"Next\": \"SuccessState\"\n    },\n    \"ResearchApproval\": {\n\
-          \         \"Type\":\"Task\",\n         \"Resource\":\"arn:aws:states:::lambda:invoke.waitForTaskToken\"\
-          ,\n         \"Parameters\":{  \n            \"FunctionName\":\"${NotifierFunction.Arn}\"\
-          ,\n            \"Payload\":{  \n               \"accuracy.$\":\"$.accuracypct\"\
-          ,\n               \"team_alias\":\"research@example.com\",\n           \
-          \    \"token.$\":\"$$.Task.Token\",\n               \"sender\":\"no-reply@example.com\"\
-          \n            }\n         },\n         \"Catch\": [ {\n            \"ErrorEquals\"\
-          : [\"HandledError\"],\n            \"Next\": \"FailState\"\n         } ],\n\
-          \      \"Next\": \"SuccessState\"\n    },\n    \"FailState\": {\n      \"\
-          Type\": \"Fail\",\n      \"Cause\": \"Invalid response.\",\n      \"Error\"\
-          : \"Failed Approval\"\n    },\n    \"SuccessState\": {\n      \"Type\":\
-          \ \"Succeed\"\n    }\n  }\n}\n"
+      RoleArn: !GetAtt SFnRole.Arn
+      DefinitionString: !Sub |
+        {
+          "Comment": "A Hello World example of the Amazon States Language using Pass states",
+          "StartAt": "ChoiceState",
+          "States": {
+            "ChoiceState": {
+              "Type": "Choice",
+              "Choices": [
+                {
+                  "Variable": "$.accuracypct",
+                  "NumericLessThan": 96,
+                  "Next": "ResearchApproval"
+                },
+                {
+                  "Variable": "$.latencyMs",
+                  "NumericGreaterThan": 80,
+                  "Next": "EngineeringApproval"
+                }
+              ],
+              "Default": "SuccessState"
+            },
+            "EngineeringApproval": {
+                 "Type":"Task",
+                 "Resource":"arn:aws:states:::lambda:invoke.waitForTaskToken",
+                 "Parameters":{  
+                    "FunctionName":"${NotifierFunction.Arn}",
+                    "Payload":{
+                      "latency.$":"$.latencyMs",
+                      "team_alias":"engineering@example.com",
+                      "token.$":"$$.Task.Token"
+                    }
+                 },
+                 "Catch": [ {
+                    "ErrorEquals": ["HandledError"],
+                    "Next": "FailState"
+                 } ],
+              "Next": "SuccessState"
+            },
+            "ResearchApproval": {
+                 "Type":"Task",
+                 "Resource":"arn:aws:states:::lambda:invoke.waitForTaskToken",
+                 "Parameters":{  
+                    "FunctionName":"${NotifierFunction.Arn}",
+                    "Payload":{  
+                       "accuracy.$":"$.accuracypct",
+                       "team_alias":"research@example.com",
+                       "token.$":"$$.Task.Token"
+                    }
+                 },
+                 "Catch": [ {
+                    "ErrorEquals": ["HandledError"],
+                    "Next": "FailState"
+                 } ],
+              "Next": "SuccessState"
+            },
+            "FailState": {
+              "Type": "Fail",
+              "Cause": "Invalid response.",
+              "Error": "Failed Approval"
+            },
+            "SuccessState": {
+              "Type": "Succeed"
+            }
+          }
+        }
   TaskTokenApi:
     Type: AWS::ApiGateway::RestApi
     Properties:
@@ -81,9 +114,9 @@ Resources:
     Properties:
       ParentId:
         Fn::GetAtt:
-        - TaskTokenApi
-        - RootResourceId
-      PathPart: '{token}'
+          - TaskTokenApi
+          - RootResourceId
+      PathPart: "{token}"
       RestApiId:
         Ref: TaskTokenApi
   SuccessMethod:
@@ -96,27 +129,28 @@ Resources:
         Ref: TaskTokenApi
       AuthorizationType: NONE
       MethodResponses:
-      - ResponseParameters:
-          method.response.header.Access-Control-Allow-Origin: true
-        StatusCode: 200
+        - ResponseParameters:
+            method.response.header.Access-Control-Allow-Origin: true
+          StatusCode: 200
       Integration:
         IntegrationHttpMethod: POST
         Type: AWS
         Credentials:
           Fn::GetAtt:
-          - APIGWRole
-          - Arn
+            - APIGWRole
+            - Arn
         Uri:
           Fn::Sub: arn:aws:apigateway:${AWS::Region}:states:action/SendTaskSuccess
         IntegrationResponses:
-        - StatusCode: 200
-          ResponseTemplates:
-            application/json: "{}\n"
-        - StatusCode: 400
-          ResponseTemplates:
-            application/json: "{\"uhoh\": \"Spaghetti O's\"}\n"
+          - StatusCode: 200
+            ResponseTemplates:
+              application/json: "{}\n"
+          - StatusCode: 400
+            ResponseTemplates:
+              application/json: "{\"uhoh\": \"Spaghetti O's\"}\n"
         RequestTemplates:
-          application/json: "#set($token=$input.params('token'))\n{\n  \"taskToken\"\
+          application/json:
+            "#set($token=$input.params('token'))\n{\n  \"taskToken\"\
             : \"$util.base64Decode($token)\",\n  \"output\": \"{}\"\n}\n"
         PassthroughBehavior: NEVER
       OperationName: TokenResponseSuccess
@@ -130,27 +164,28 @@ Resources:
         Ref: TaskTokenApi
       AuthorizationType: NONE
       MethodResponses:
-      - ResponseParameters:
-          method.response.header.Access-Control-Allow-Origin: true
-        StatusCode: 200
+        - ResponseParameters:
+            method.response.header.Access-Control-Allow-Origin: true
+          StatusCode: 200
       Integration:
         IntegrationHttpMethod: POST
         Type: AWS
         Credentials:
           Fn::GetAtt:
-          - APIGWRole
-          - Arn
+            - APIGWRole
+            - Arn
         Uri:
           Fn::Sub: arn:aws:apigateway:${AWS::Region}:states:action/SendTaskFailure
         IntegrationResponses:
-        - StatusCode: 200
-          ResponseTemplates:
-            application/json: "{}\n"
-        - StatusCode: 400
-          ResponseTemplates:
-            application/json: "{\"uhoh\": \"Spaghetti O's\"}\n"
+          - StatusCode: 200
+            ResponseTemplates:
+              application/json: "{}\n"
+          - StatusCode: 400
+            ResponseTemplates:
+              application/json: "{\"uhoh\": \"Spaghetti O's\"}\n"
         RequestTemplates:
-          application/json: "#set($token=$input.params('token'))\n{\n   \"cause\"\
+          application/json:
+            "#set($token=$input.params('token'))\n{\n   \"cause\"\
             : \"Failed Manual Approval\",\n   \"error\": \"HandledError\",\n   \"\
             output\": \"{}\",\n   \"taskToken\": \"$util.base64Decode($token)\"\n\
             }\n"
@@ -159,8 +194,8 @@ Resources:
   APIDeployment:
     Type: AWS::ApiGateway::Deployment
     DependsOn:
-    - FailMethod
-    - SuccessMethod
+      - FailMethod
+      - SuccessMethod
     Properties:
       Description: Prod Stage
       RestApiId:
@@ -170,47 +205,47 @@ Resources:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
-        Version: '2012-10-17'
+        Version: "2012-10-17"
         Statement:
-        - Effect: Allow
-          Principal:
-            Service:
-            - apigateway.amazonaws.com
-          Action:
-          - sts:AssumeRole
+          - Effect: Allow
+            Principal:
+              Service:
+                - apigateway.amazonaws.com
+            Action:
+              - sts:AssumeRole
       Path: /
       Policies:
-      - PolicyName: root
-        PolicyDocument:
-          Version: 2012-10-17
-          Statement:
-          - Effect: Allow
-            Action:
-            - states:SendTaskSuccess
-            - states:SendTaskFailure
-            Resource: '*'
+        - PolicyName: root
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - states:SendTaskSuccess
+                  - states:SendTaskFailure
+                Resource: "*"
   SFnRole:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
-        Version: '2012-10-17'
+        Version: "2012-10-17"
         Statement:
-        - Effect: Allow
-          Principal:
-            Service:
-            - states.amazonaws.com
-          Action:
-          - sts:AssumeRole
+          - Effect: Allow
+            Principal:
+              Service:
+                - states.amazonaws.com
+            Action:
+              - sts:AssumeRole
       Path: /
       Policies:
-      - PolicyName: root
-        PolicyDocument:
-          Version: 2012-10-17
-          Statement:
-          - Effect: Allow
-            Action:
-            - lambda:InvokeFunction
-            Resource:
-              Fn::GetAtt:
-              - NotifierFunction
-              - Arn
+        - PolicyName: root
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - lambda:InvokeFunction
+                Resource:
+                  Fn::GetAtt:
+                    - NotifierFunction
+                    - Arn
