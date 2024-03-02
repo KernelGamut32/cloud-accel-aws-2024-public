@@ -6,7 +6,7 @@ phases:
       - echo Nothing to do in the pre_build phase...
   build:
     commands:
-      - echo Build started on `date`
+      - echo Build phase started on `$(date)`
   post_build:
     commands:
-      - echo Build completed on `date`
+      - echo Build phase completed on `$(date)`

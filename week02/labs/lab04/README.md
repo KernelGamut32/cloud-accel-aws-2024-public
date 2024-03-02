@@ -39,7 +39,7 @@
 
 ![ResearchApproval Updates](res-approval-updates.png "ResearchApproval Updates")
 
-* Pick up from the remaining instructions outlined in the provided lab URL to inject the approval step function into the CodePipeline; when instructed to select an input artifact, use `SourceArtifact` (in reality, you would likely be using the results of the build process but our build process here is minimal)
+* Pick up from the remaining instructions outlined in the provided lab URL to inject the approval step function into the CodePipeline; when instructed to select an input artifact, use `SourceArtifact` (in reality, you would be using the results of the build process but our build process here is minimal)
 * To test the pipeline, create a `results.json` file in the `main` branch of the CodeCommit repo; use the following contents for the file to test the engineering approval route
 
 ```

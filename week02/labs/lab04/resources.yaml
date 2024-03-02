@@ -1,0 +1,408 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+
+Parameters:
+  BuildSpecBucketName:
+    Type: String
+    Description: "Bucket used for storage of initial source code"
+  EngineeringApprovalTeamAlias:
+    Type: String
+    Description: "Email alias for the engineering team"
+  ResearchApprovalTeamAlias:
+    Type: String
+    Description: "Email alias for the research team"
+
+Resources:
+  NotifierFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: email_sender/
+      Handler: app.lambda_handler
+      Runtime: python3.11
+      Timeout: 30
+      Environment:
+        Variables:
+          URL: !Sub "https://${TaskTokenApi}.execute-api.${AWS::Region}.amazonaws.com/Prod"
+      Policies:
+        - Statement:
+            - Sid: SendEmail
+              Effect: Allow
+              Action:
+                - ses:SendEmail
+              Resource: "*"
+
+  ReleaseApprovalStateMachine:
+    Type: AWS::StepFunctions::StateMachine
+    Properties:
+      RoleArn: !GetAtt SFnRole.Arn
+      DefinitionString: !Sub |
+        {
+          "Comment": "State Machine used to manage workflow approval during deployment.",
+          "StartAt": "ChoiceState",
+          "States": {
+            "ChoiceState": {
+              "Type": "Choice",
+              "Choices": [
+                {
+                  "Variable": "$.accuracypct",
+                  "NumericLessThan": 96,
+                  "Next": "ResearchApproval"
+                },
+                {
+                  "Variable": "$.latencyMs",
+                  "NumericGreaterThan": 80,
+                  "Next": "EngineeringApproval"
+                }
+              ],
+              "Default": "SuccessState"
+            },
+            "EngineeringApproval": {
+                 "Type":"Task",
+                 "Resource":"arn:aws:states:::lambda:invoke.waitForTaskToken",
+                 "Parameters":{  
+                    "FunctionName":"${NotifierFunction.Arn}",
+                    "Payload":{
+                      "latency.$":"$.latencyMs",
+                      "team_alias":"${EngineeringApprovalTeamAlias}",
+                      "token.$":"$$.Task.Token",
+                      "sender":"no-reply@example.com"
+                    }
+                 },
+                 "Catch": [ {
+                    "ErrorEquals": ["HandledError"],
+                    "Next": "FailState"
+                 } ],
+              "Next": "SuccessState"
+            },
+            "ResearchApproval": {
+                 "Type":"Task",
+                 "Resource":"arn:aws:states:::lambda:invoke.waitForTaskToken",
+                 "Parameters":{  
+                    "FunctionName":"${NotifierFunction.Arn}",
+                    "Payload":{  
+                       "accuracy.$":"$.accuracypct",
+                       "team_alias":"${ResearchApprovalTeamAlias}",
+                       "token.$":"$$.Task.Token",
+                       "sender":"no-reply@example.com"
+                    }
+                 },
+                 "Catch": [ {
+                    "ErrorEquals": ["HandledError"],
+                    "Next": "FailState"
+                 } ],
+              "Next": "SuccessState"
+            },
+            "FailState": {
+              "Type": "Fail",
+              "Cause": "Invalid response.",
+              "Error": "Failed Approval"
+            },
+            "SuccessState": {
+              "Type": "Succeed"
+            }
+          }
+        }
+
+  TaskTokenApi:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Description: String
+      Name: TokenHandler
+  SuccessResource:
+    Type: AWS::ApiGateway::Resource
+    Properties:
+      ParentId: !Ref TokenResource
+      PathPart: "success"
+      RestApiId: !Ref TaskTokenApi
+  FailResource:
+    Type: AWS::ApiGateway::Resource
+    Properties:
+      ParentId: !Ref TokenResource
+      PathPart: "fail"
+      RestApiId: !Ref TaskTokenApi
+  TokenResource:
+    Type: AWS::ApiGateway::Resource
+    Properties:
+      ParentId: !GetAtt TaskTokenApi.RootResourceId
+      PathPart: "{token}"
+      RestApiId: !Ref TaskTokenApi
+  SuccessMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      HttpMethod: GET
+      ResourceId: !Ref SuccessResource
+      RestApiId: !Ref TaskTokenApi
+      AuthorizationType: NONE
+      MethodResponses:
+        - ResponseParameters:
+            method.response.header.Access-Control-Allow-Origin: true
+          StatusCode: 200
+      Integration:
+        IntegrationHttpMethod: POST
+        Type: AWS
+        Credentials: !GetAtt APIGWRole.Arn
+        Uri: !Sub "arn:aws:apigateway:${AWS::Region}:states:action/SendTaskSuccess"
+        IntegrationResponses:
+          - StatusCode: 200
+            ResponseTemplates:
+              application/json: |
+                {}
+          - StatusCode: 400
+            ResponseTemplates:
+              application/json: |
+                {"uhoh": "Spaghetti O's"}
+        RequestTemplates:
+          application/json: |
+            #set($token=$input.params('token'))
+            {
+              "taskToken": "$util.base64Decode($token)",
+              "output": "{}"
+            }
+        PassthroughBehavior: NEVER
+      OperationName: "TokenResponseSuccess"
+  FailMethod:
+    Type: AWS::ApiGateway::Method
+    Properties:
+      HttpMethod: GET
+      ResourceId: !Ref FailResource
+      RestApiId: !Ref TaskTokenApi
+      AuthorizationType: NONE
+      MethodResponses:
+        - ResponseParameters:
+            method.response.header.Access-Control-Allow-Origin: true
+          StatusCode: 200
+      Integration:
+        IntegrationHttpMethod: POST
+        Type: AWS
+        Credentials: !GetAtt APIGWRole.Arn
+        Uri: !Sub "arn:aws:apigateway:${AWS::Region}:states:action/SendTaskFailure"
+        IntegrationResponses:
+          - StatusCode: 200
+            ResponseTemplates:
+              application/json: |
+                {}
+          - StatusCode: 400
+            ResponseTemplates:
+              application/json: |
+                {"uhoh": "Spaghetti O's"}
+        RequestTemplates:
+          application/json: |
+            #set($token=$input.params('token'))
+            {
+               "cause": "Failed Manual Approval",
+               "error": "HandledError",
+               "output": "{}",
+               "taskToken": "$util.base64Decode($token)"
+            }
+        PassthroughBehavior: NEVER
+      OperationName: "TokenResponseFail"
+
+  APIDeployment:
+    Type: AWS::ApiGateway::Deployment
+    DependsOn:
+      - FailMethod
+      - SuccessMethod
+    Properties:
+      Description: "Prod Stage"
+      RestApiId:
+        Ref: TaskTokenApi
+      StageName: Prod
+
+  APIGWRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal:
+              Service:
+                - "apigateway.amazonaws.com"
+            Action:
+              - "sts:AssumeRole"
+      Path: "/"
+      Policies:
+        - PolicyName: root
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "states:SendTaskSuccess"
+                  - "states:SendTaskFailure"
+                Resource: "*"
+  SFnRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Principal:
+              Service:
+                - "states.amazonaws.com"
+            Action:
+              - "sts:AssumeRole"
+      Path: "/"
+      Policies:
+        - PolicyName: root
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action:
+                  - "lambda:InvokeFunction"
+                Resource: !GetAtt NotifierFunction.Arn
+
+  S3Bucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: !Sub "codepipeline-lab-${AWS::Region}-${AWS::AccountId}-capdelta"
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: "AES256"
+            BucketKeyEnabled: false
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: "BucketOwnerEnforced"
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  CodePipelineRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Sid: AllowAssumeRole
+            Effect: Allow
+            Principal:
+              Service: "codepipeline.amazonaws.com"
+            Action: "sts:AssumeRole"
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/AdministratorAccess"
+
+  CodeBuildRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Sid: AllowAssumeRole
+            Effect: Allow
+            Principal:
+              Service: "codebuild.amazonaws.com"
+            Action: "sts:AssumeRole"
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/AdministratorAccess"
+
+  CodeCommitRepository:
+    Type: "AWS::CodeCommit::Repository"
+    Properties:
+      RepositoryName: "cicdstepfunctions"
+      Code:
+        S3:
+          Bucket: !Ref BuildSpecBucketName
+          Key: source.zip
+
+  CodeBuildProject:
+    Type: "AWS::CodeBuild::Project"
+    Properties:
+      Name: !Sub "${CodeCommitRepository.Name}-build"
+      Source:
+        GitCloneDepth: 1
+        GitSubmodulesConfig:
+          FetchSubmodules: false
+        InsecureSsl: false
+        Location: !GetAtt CodeCommitRepository.CloneUrlHttp
+        Type: "CODECOMMIT"
+      Artifacts:
+        Type: "NO_ARTIFACTS"
+      Cache:
+        Type: "NO_CACHE"
+      Environment:
+        ComputeType: "BUILD_GENERAL1_SMALL"
+        Image: "aws/codebuild/amazonlinux2-x86_64-standard:5.0"
+        ImagePullCredentialsType: "CODEBUILD"
+        PrivilegedMode: false
+        Type: "LINUX_CONTAINER"
+      ServiceRole: !GetAtt CodeBuildRole.Arn
+      TimeoutInMinutes: 60
+      QueuedTimeoutInMinutes: 480
+      EncryptionKey: !Sub "arn:aws:kms:${AWS::Region}:${AWS::AccountId}:alias/aws/s3"
+      BadgeEnabled: false
+      LogsConfig:
+        CloudWatchLogs:
+          Status: "ENABLED"
+        S3Logs:
+          Status: "DISABLED"
+          EncryptionDisabled: false
+      Visibility: "PRIVATE"
+
+  CodePipelinePipeline:
+    Type: "AWS::CodePipeline::Pipeline"
+    Properties:
+      Name: !GetAtt CodeCommitRepository.Name
+      RoleArn: !GetAtt CodePipelineRole.Arn
+      ArtifactStore:
+        Location: !Ref S3Bucket
+        Type: "S3"
+      Stages:
+        - Name: "Source"
+          Actions:
+            - Name: "Source"
+              ActionTypeId:
+                Category: "Source"
+                Owner: "AWS"
+                Provider: "CodeCommit"
+                Version: "1"
+              Configuration:
+                BranchName: "main"
+                OutputArtifactFormat: "CODE_ZIP"
+                PollForSourceChanges: "false"
+                RepositoryName: !GetAtt CodeCommitRepository.Name
+              OutputArtifacts:
+                - Name: "SourceArtifact"
+              Region: !Ref AWS::Region
+              Namespace: "SourceVariables"
+              RunOrder: 1
+        - Name: "Build"
+          Actions:
+            - Name: "Build"
+              ActionTypeId:
+                Category: "Build"
+                Owner: "AWS"
+                Provider: "CodeBuild"
+                Version: "1"
+              Configuration:
+                ProjectName: !Sub "${CodeCommitRepository.Name}-build"
+              InputArtifacts:
+                - Name: "SourceArtifact"
+              OutputArtifacts:
+                - Name: "BuildArtifact"
+              Region: !Ref AWS::Region
+              Namespace: "BuildVariables"
+              RunOrder: 1
+        - Name: "Release-Approval"
+          Actions:
+            - Name: "CheckForRequiredApprovals"
+              ActionTypeId:
+                Category: "Invoke"
+                Owner: "AWS"
+                Provider: "StepFunctions"
+                Version: "1"
+              Configuration:
+                InputType: FilePath
+                Input: "results.json"
+                StateMachineArn: !Ref ReleaseApprovalStateMachine.Arn
+              InputArtifacts:
+                - Name: "SourceArtifact"
+              OutputArtifacts:
+                - Name: "ApprovalArtifacts"
+              Region: !Ref AWS::Region
+              Namespace: "StepFunctions"
+              RunOrder: 1
