@@ -398,7 +398,7 @@ Resources:
               Configuration:
                 InputType: FilePath
                 Input: "results.json"
-                StateMachineArn: !Ref ReleaseApprovalStateMachine.Arn
+                StateMachineArn: !GetAtt ReleaseApprovalStateMachine.Arn
               InputArtifacts:
                 - Name: "SourceArtifact"
               OutputArtifacts:
