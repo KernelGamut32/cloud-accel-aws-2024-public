@@ -46,27 +46,15 @@ new FirstCdkAppStack(app, 'green', {
 * In the project view on the left, navigate to the cdk-lab-1/lib folder and open `first-cdk-app-stack.ts` to review the file contents
 * Replace that file's contents with the file contents of `cloud-accel-aws-2024-public/week03/labs/lab02/blue.first-cdk-app-stack.ts` to create resources for the blue environment; **save your changes**
 * Deploy the `blue` environment using `cdk deploy blue`
-* Execute `curl <blue.RestAPIEndpoint>scan` (replace `<blue.RestAPIEndpoint>` with the output value from the cdk deployment, including the `/` between the endpoint and `scan`) to test Lambda execution through the API gateway resource
+* Execute `curl <blue API endpoint>/scan`, using the output value from the `blue` CDK deployment to test Lambda execution through the API gateway resource
 * In the project view on the left, navigate to the cdk-lab-1/lib folder and open `first-cdk-app-stack.ts` to review the file contents
-* Replace that file's contents with the file contents of `cloud-accel-aws-2024-public/week03/labs/lab02/green.first-cdk-app-stack.ts` to create resources for the blue environment; **save your changes**
-* Deploy the `blue` environment using `cdk deploy blue`
-* Execute `curl <blue.RestAPIEndpoint>scan` (replace `<blue.RestAPIEndpoint>` with the output value from the cdk deployment, including the `/` between the endpoint and `scan`) to test Lambda execution through the API gateway resource
-
-
-
-
-* If you run into any issues running `cdk bootstrap`, execute the following steps:
-    * Click the "Cloud9" logo in the upper left corner of the IDE and click "Preferences"
-    * Click "AWS Settings" and uncheck "AWS managed temporary credentials"
-    * In the Cloud9 terminal, run `aws configure` and set access key ID (from ACG credentials), secret access key (from ACG credentials), and default region (`us-east-1`)
-    * Run `cdk bootstrap` again and confirm completes successfully
-* Steps as outlined in lab will likely have issues:
-    * Use the provided `first-cdk-app-stack.ts` file contents for the corresponding step
-    * Use the provided `first-cdk-app-stack.add-items.ts` file contents for the corresponding step
-* After "green" deployment, note that both versions are available via different API Gateway endpoints
-* Execute the `/scan` endpoint to trigger the Lambda function against the "blue" URL
-* Execute the `/scan` endpoint to trigger the Lambda function against the "green" URL
-* Execute the `/add` endpoint to trigger the Lambda function against the "green" URL - use `curl -X PUT -d '{"id":"4567","name":"Another Test Item"}' https://<green API endpoint>/prod/add`
-* Execute the `/scan` endpoint against the "green" URL again to confirm that new item got added to the DynamoDB table
-* If you execute `/scan` against the "blue" URL, you should see that the new item is not present as the "blue" deployment is still serving the original version of the Lambda function and DynamoDB table
-* Execute `cdk destroy blue` to tear down the "blue" instance; after completion, verify that the "green" version is still present and operational
+* Replace that file's contents with the file contents of `cloud-accel-aws-2024-public/week03/labs/lab02/green.first-cdk-app-stack.ts` to create resources for the green environment; **save your changes**
+* Create a new file in the `lib` folder called `first-cdk-app-stack.add-item.ts` - replace its contents with `cloud-accel-aws-2024-public/week03/labs/lab02/first-cdk-app-stack.add-item.ts`
+* Deploy the `green` environment using `cdk deploy green`
+* After `green` deployment, note that both versions are available via different API Gateway endpoints
+* Execute the `/scan` endpoint to trigger the Lambda function against the `blue` URL
+* Execute the `/scan` endpoint to trigger the Lambda function against the `green` URL
+* Execute the `/add` endpoint to trigger the Lambda function against the `green` URL - use `curl -X PUT -d '{"id":"4567","name":"Another Test Item"}' curl <green API endpoint>/add` (using the output value from the `green` deployment)
+* Execute the `/scan` endpoint against the `green` URL again to confirm that new item got added to the DynamoDB table
+* If you execute `/scan` against the `blue` URL, you should see that the new item is not present as the `blue` deployment is still serving the original version of the Lambda function and DynamoDB table
+* Execute `cdk destroy blue` to tear down the `blue` instance; after completion, verify that the `green` version is still present and operational

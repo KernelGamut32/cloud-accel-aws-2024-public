@@ -1,10 +1,8 @@
-import { RemovalPolicy, Stack, StackProps, App } from "aws-cdk-lib";
-import { Construct } from "constructs";
+import { RemovalPolicy, Stack, StackProps, App, Duration } from "aws-cdk-lib";
 import * as dynamodb from "aws-cdk-lib/aws-dynamodb";
 import * as apigateway from "aws-cdk-lib/aws-apigateway";
 import * as lambda from "aws-cdk-lib/aws-lambda";
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
-import { LambdaRestApi } from "aws-cdk-lib/aws-apigateway";
 import { Runtime } from "aws-cdk-lib/aws-lambda";
 
 interface MyCdkStackProps extends StackProps {
@@ -26,6 +24,7 @@ export class FirstCdkAppStack extends Stack {
     //define lambda function and regeference function file
     const lambda_backend = new NodejsFunction(this, "function", {
       tracing: lambda.Tracing.ACTIVE,
+      //don't use default runtime (14.x)
       runtime: Runtime.NODEJS_16_X,
       environment: {
         DYNAMODB: dynamodb_table.tableName,
@@ -35,10 +34,13 @@ export class FirstCdkAppStack extends Stack {
     //define lambda function to add items to table
     const add_item_lambda_backend = new NodejsFunction(this, "add-item", {
       tracing: lambda.Tracing.ACTIVE,
+      //don't use default runtime (14.x)
       runtime: Runtime.NODEJS_16_X,
       environment: {
         DYNAMODB: dynamodb_table.tableName,
       },
+      //prevent timeout when executing the function
+      timeout: Duration.seconds(10),
     });
 
     //grant lambda function read access to dynamodb table
