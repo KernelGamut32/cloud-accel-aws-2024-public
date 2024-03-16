@@ -12,7 +12,14 @@ As part of this lab, we will also review Former2 (https://former2.com/).
     - Specify a name for the environment
     - Select `t3.small` for instance type
     - Leave all other options at their defaults, and click `Create`
-    - Click the radio button next to your Cloud9 environment and click `Open in Cloud9` (it may take a few seconds for the environment to come up)
+    - Wait for the Cloud9 environment creation to complete and click the link for your newly created environment
+    - Under `EC2 instance` click `Manage EC2 instance`
+    - Click the `Instance ID` link
+    - Select `Storage`, click the `Volume ID` link, click the checkbox next to your volume, and select `Modify volume` from the `Actions` dropdown
+    - Increase size from `10` to `30` GiB; click `Modify` and click `Modify` in the confirmation dialog
+    - Reboot your EC2 instance
+    - Go back to Cloud9, click the radio button next to your Cloud9 environment, and click `Open in Cloud9`
+    - In the terminal window, you can run `lsblk` to confirm new size
 * In the provided terminal, clone this repository using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
 * In the project view on the left, navigate to the week 02/lab 01 folder and open `secured-bucket.yaml` to review the template definition
 * Push the CloudFormation template to AWS using `aws cloudformation create-stack --stack-name secured-s3 --template-body file://./cloud-accel-aws-2024-public/week02/labs/lab01/secured-bucket.yaml`

@@ -1,8 +1,23 @@
 # Lab 05 - [GitLab CI/CD](https://aws.amazon.com/blogs/apn/using-gitlab-ci-cd-pipeline-to-deploy-aws-sam-applications/)
 
+**NOTE: Use an A Cloud Guru (ACG) AWS Playground for this lab**
+
+**If you encounter "no space left on device issues", use https://ryansouthgate.com/aws-cloud9-no-space-left-on-device/#:~:text=There%E2%80%99s%20a%20few%20things%20we%20can%20tackle%20here%2C,clean%20up%20that%20much%20free%20space%20for%20me**
+
 **See: https://docs.gitlab.com/ee/ci/yaml/gitlab_ci_yaml.html and https://docs.gitlab.com/ee/ci/yaml/index.html for additional information on the syntax used in the `.gitlab-ci.yml` file**
 
-* Execute in a Cloud9 environment in an ACG sandbox host
+* In the lab environment, create a new Cloud9 environment by navigating to the Cloud9 console and clicking `Create environment` (or reuse a previously-created environment)
+    - Specify a name for the environment
+    - Select `t3.small` for instance type
+    - Leave all other options at their defaults, and click `Create`
+    - Wait for the Cloud9 environment creation to complete and click the link for your newly created environment
+    - Under `EC2 instance` click `Manage EC2 instance`
+    - Click the `Instance ID` link
+    - Select `Storage`, click the `Volume ID` link, click the checkbox next to your volume, and select `Modify volume` from the `Actions` dropdown
+    - Increase size from `10` to `30` GiB; click `Modify` and click `Modify` in the confirmation dialog
+    - Reboot your EC2 instance
+    - Go back to Cloud9, click the radio button next to your Cloud9 environment, and click `Open in Cloud9`
+    - In the terminal window, you can run `lsblk` to confirm new size
 * Create a new project in GitLab (I used public) but **do not initialize with a README** (I used `gitlabci-lab` for project name)
 * Execute the following: `sam init -r python3.8 -n <repository name> --app-template "hello-world"` from the `~/environment` path in the terminal (use value from previous step for `<repository name>`)
 * This will create a new folder containing a simple SAM (Serverless Application Model) Lambda
