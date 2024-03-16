@@ -8,6 +8,7 @@ Nested Stacks can use outputs from other stacks within the same group. Exporting
 
 * In the lab environment, create a new Cloud9 environment by navigating to the Cloud9 console and clicking `Create environment` (or reuse a previously-created environment)
     - Specify a name for the environment
+    - Select `t3.small` for instance type
     - Leave all other options at their defaults, and click `Create`
     - Click the radio button next to your Cloud9 environment and click `Open in Cloud9` (it may take a few seconds for the environment to come up)
 * In the provided terminal, clone this repository using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`

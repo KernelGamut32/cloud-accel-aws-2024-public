@@ -6,13 +6,13 @@
 
 * In the lab environment, create a new Cloud9 environment by navigating to the Cloud9 console and clicking `Create environment` (or reuse a previously-created environment)
     - Specify a name for the environment
+    - Select `t3.small` for instance type
     - Leave all other options at their defaults, and click `Create`
     - Click the radio button next to your Cloud9 environment and click `Open in Cloud9` (it may take a few seconds for the environment to come up)
 * In the terminal window, you can verify installation of required dependencies by running the following commands:
     * `git --version`
     * `aws --version`
     * `cdk --version`
-    * `sam --version`
     * `npm --version`
     * `node --version`
 * Create a new folder by running `mkdir -p cdk-labstart`
@@ -27,7 +27,8 @@
 * Open `cdk-labstart/lib/cdk-labstart-stack.ts`, uncomment the line that creates an SQS queue, and uncomment the `import` statement; **save your changes**
 * Run `cdk synth` to generate the CloudFormation template
 * You can review the template by opening the generated files in the "cdk.out" folder
-* Run `cdk deploy` and navigate to SQS in another tab to verify that the queue was created
+* Run `cdk deploy`; you navigate to CloudFormation and see a new stack running
+* Navigate to SQS in another tab to verify that the queue was created
 * Return to `cdk-labstart/lib/cdk-labstart-stack.ts` and change `cdk.Duration.seconds(300)` to `cdk.Duration.seconds(600)`; **save your changes**
 * Run `cdk diff` (which automatically runs `cdk synth` behind-the-scenes) to see the changes that will be made to the stack (differences between what's in the template and what's in the stack)
 * Run `cdk deploy` to update the deployment - you can observe the changes being processed in the CloudFormation console
