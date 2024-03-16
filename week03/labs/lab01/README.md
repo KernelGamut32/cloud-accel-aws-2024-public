@@ -8,7 +8,6 @@
     - Specify a name for the environment
     - Leave all other options at their defaults, and click `Create`
     - Click the radio button next to your Cloud9 environment and click `Open in Cloud9` (it may take a few seconds for the environment to come up)
-* In the provided terminal, clone this repository using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
 * In the terminal window, you can verify installation of required dependencies by running the following commands:
     * `git --version`
     * `aws --version`
