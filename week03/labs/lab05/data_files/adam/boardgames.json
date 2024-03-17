@@ -1,0 +1,634 @@
+{
+    "collectors": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "ages": {
+                        "S": "8+"
+                    },
+                    "bgg": {
+                        "S": "https://boardgamegeek.com/boardgame/238041/clue-legend-zelda"
+                    },
+                    "bggrating": {
+                        "N": "6.7"
+                    },
+                    "collection_id": {
+                        "S": "adam_boardgames"
+                    },
+                    "game": {
+                        "S": "CLUE - Zelda Collector's Edition"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/CLUEZeldaCollectorsEdition.jpg"
+                    },
+                    "link": {
+                        "S": "https://www.amazon.com/Legend-Zelda-Clue-Board-Game/dp/B06Y1ZZLHL"
+                    },
+                    "order": {
+                        "N": "1"
+                    },
+                    "players": {
+                        "S": "2-6"
+                    },
+                    "publisher": {
+                        "S": "USAopoly"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/thumbs/CLUEZeldaCollectorsEdition.jpg"
+                    },
+                    "time": {
+                        "N": "45"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ages": {
+                        "S": "14+"
+                    },
+                    "bgg": {
+                        "S": "https://boardgamegeek.com/boardgame/178900/codenames"
+                    },
+                    "bggrating": {
+                        "N": "7.7"
+                    },
+                    "collection_id": {
+                        "S": "adam_boardgames"
+                    },
+                    "game": {
+                        "S": "Codenames"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/Codenames.jpg"
+                    },
+                    "link": {
+                        "S": "https://www.amazon.com/Czech-Games-00031CGE-Codenames/dp/B014Q1XX9S"
+                    },
+                    "order": {
+                        "N": "2"
+                    },
+                    "players": {
+                        "S": "2-8"
+                    },
+                    "publisher": {
+                        "S": "Czech Games Edition"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/thumbs/Codenames.jpg"
+                    },
+                    "time": {
+                        "N": "15"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ages": {
+                        "S": "9+"
+                    },
+                    "bgg": {
+                        "S": "https://boardgamegeek.com/boardgame/220774/codenames-marvel"
+                    },
+                    "bggrating": {
+                        "N": "6.4"
+                    },
+                    "collection_id": {
+                        "S": "adam_boardgames"
+                    },
+                    "game": {
+                        "S": "Codenames - Marvel"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/Codenames-Marvel.jpg"
+                    },
+                    "link": {
+                        "S": "https://www.amazon.com/USAopoly-CE011-000-Marvel-Codenames/dp/B06Y3R9XMJ"
+                    },
+                    "order": {
+                        "N": "3"
+                    },
+                    "players": {
+                        "S": "2-8"
+                    },
+                    "publisher": {
+                        "S": "Czech Games Edition"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/thumbs/Codenames-Marvel.jpg"
+                    },
+                    "time": {
+                        "N": "15"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ages": {
+                        "S": "12+"
+                    },
+                    "bgg": {
+                        "S": "https://boardgamegeek.com/boardgame/225694/decrypto"
+                    },
+                    "bggrating": {
+                        "N": "7.8"
+                    },
+                    "collection_id": {
+                        "S": "adam_boardgames"
+                    },
+                    "game": {
+                        "S": "Decrypto"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/Decrypto.jpg"
+                    },
+                    "link": {
+                        "S": "https://www.amazon.com/IELLO-SM4449-Decrypto-Board-Game/dp/B0765KL7B8"
+                    },
+                    "order": {
+                        "N": "4"
+                    },
+                    "players": {
+                        "S": "3-8"
+                    },
+                    "publisher": {
+                        "S": "Le Scorpion Masqué"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/thumbs/Decrypto.jpg"
+                    },
+                    "time": {
+                        "N": "30"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ages": {
+                        "S": "8+"
+                    },
+                    "bgg": {
+                        "S": "https://boardgamegeek.com/boardgame/1339/dungeon"
+                    },
+                    "bggrating": {
+                        "N": "6.0"
+                    },
+                    "collection_id": {
+                        "S": "adam_boardgames"
+                    },
+                    "game": {
+                        "S": "Dungeon! Fantasy Board Game"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/DungeonFantasyBoardGame.jpg"
+                    },
+                    "link": {
+                        "S": "https://www.amazon.com/Wizards-Coast-A78490000-Dungeon-Fantasy/dp/078696555X"
+                    },
+                    "order": {
+                        "N": "5"
+                    },
+                    "players": {
+                        "S": "1-8"
+                    },
+                    "publisher": {
+                        "S": "Hasbro"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/thumbs/DungeonFantasyBoardGame.jpg"
+                    },
+                    "time": {
+                        "N": "30"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ages": {
+                        "S": "10+"
+                    },
+                    "bgg": {
+                        "S": "https://boardgamegeek.com/boardgame/770/loot"
+                    },
+                    "bggrating": {
+                        "N": "6.3"
+                    },
+                    "collection_id": {
+                        "S": "adam_boardgames"
+                    },
+                    "game": {
+                        "S": "Loot The Plundering Game"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/LootThePlunderingGame.jpg"
+                    },
+                    "link": {
+                        "S": "https://www.amazon.com/Gamewright-SS-GMW-231-LOOT-Card-Game/dp/B0009XBY30"
+                    },
+                    "order": {
+                        "N": "6"
+                    },
+                    "players": {
+                        "S": "2-8"
+                    },
+                    "publisher": {
+                        "S": "GameWright"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/thumbs/LootThePlunderingGame.jpg"
+                    },
+                    "time": {
+                        "N": "20"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ages": {
+                        "S": "8+"
+                    },
+                    "bgg": {
+                        "S": "https://boardgamegeek.com/boardgame/147949/one-night-ultimate-werewolf"
+                    },
+                    "bggrating": {
+                        "N": "7.2"
+                    },
+                    "collection_id": {
+                        "S": "adam_boardgames"
+                    },
+                    "game": {
+                        "S": "One Night Ultimate Werewolf"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/OneNightUltimateWerewolf.jpg"
+                    },
+                    "link": {
+                        "S": "https://www.amazon.com/Bezier-Games-ONUWBEZ-Ultimate-Werewolf/dp/B00HS7GG5G"
+                    },
+                    "order": {
+                        "N": "7"
+                    },
+                    "players": {
+                        "S": "3-10"
+                    },
+                    "publisher": {
+                        "S": "Bézier Games"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/thumbs/OneNightUltimateWerewolf.jpg"
+                    },
+                    "time": {
+                        "N": "10"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ages": {
+                        "S": "8+"
+                    },
+                    "bgg": {
+                        "S": "https://boardgamegeek.com/boardgame/30549/pandemic"
+                    },
+                    "bggrating": {
+                        "N": "7.6"
+                    },
+                    "collection_id": {
+                        "S": "adam_boardgames"
+                    },
+                    "game": {
+                        "S": "Pandemic"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/Pandemic.jpg"
+                    },
+                    "link": {
+                        "S": "https://www.amazon.com/Z-Man-Games-ZM7101-Pandemic/dp/B00A2HD40E"
+                    },
+                    "order": {
+                        "N": "8"
+                    },
+                    "players": {
+                        "S": "2-4"
+                    },
+                    "publisher": {
+                        "S": "Z-Man Games, Inc"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/thumbs/Pandemic.jpg"
+                    },
+                    "time": {
+                        "N": "45"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ages": {
+                        "S": "8+"
+                    },
+                    "bgg": {
+                        "S": "https://boardgamegeek.com/boardgame/102652/sentinels-multiverse"
+                    },
+                    "bggrating": {
+                        "N": "7.3"
+                    },
+                    "collection_id": {
+                        "S": "adam_boardgames"
+                    },
+                    "game": {
+                        "S": "Sentinels of the Multiverse"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/SentinelsoftheMultiverse.jpg"
+                    },
+                    "link": {
+                        "S": "https://www.amazon.com/Greater-Than-Games-Sentinels-Multiverse/dp/B0095ZFA5Q"
+                    },
+                    "order": {
+                        "N": "9"
+                    },
+                    "players": {
+                        "S": "2-5"
+                    },
+                    "publisher": {
+                        "S": "Greater Than Games"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/thumbs/SentinelsoftheMultiverse.jpg"
+                    },
+                    "time": {
+                        "S": "30-60"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ages": {
+                        "S": "8+"
+                    },
+                    "bgg": {
+                        "S": "https://boardgamegeek.com/boardgame/202582/trellis"
+                    },
+                    "bggrating": {
+                        "N": "6.3"
+                    },
+                    "collection_id": {
+                        "S": "adam_boardgames"
+                    },
+                    "game": {
+                        "S": "Trellis"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/Trellis.jpg"
+                    },
+                    "link": {
+                        "S": "https://www.amazon.com/Breaking-Games-BGZ110039-Trellis/dp/B07KTBFSV3/"
+                    },
+                    "order": {
+                        "N": "10"
+                    },
+                    "players": {
+                        "S": "2-4"
+                    },
+                    "publisher": {
+                        "S": "Breaking Games"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/thumbs/Trellis.jpg"
+                    },
+                    "time": {
+                        "S": "20-30"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ages": {
+                        "S": "14+"
+                    },
+                    "bgg": {
+                        "S": "https://boardgamegeek.com/boardgame/255907/trogdor-board-game"
+                    },
+                    "bggrating": {
+                        "N": "7.1"
+                    },
+                    "collection_id": {
+                        "S": "adam_boardgames"
+                    },
+                    "game": {
+                        "S": "Trogdor!! The board game"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/TrogdorTheboardgame.jpg"
+                    },
+                    "link": {
+                        "S": "https://www.kickstarter.com/projects/1999933720/trogdor-the-board-game"
+                    },
+                    "order": {
+                        "N": "11"
+                    },
+                    "players": {
+                        "S": "1-6"
+                    },
+                    "publisher": {
+                        "S": "(Self-Published)"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/thumbs/TrogdorTheboardgame.jpg"
+                    },
+                    "time": {
+                        "S": "30-60"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ages": {
+                        "S": "12+"
+                    },
+                    "bgg": {
+                        "S": "https://boardgamegeek.com/boardgame/31016/we-didnt-playtest-all"
+                    },
+                    "bggrating": {
+                        "N": "5.6"
+                    },
+                    "collection_id": {
+                        "S": "adam_boardgames"
+                    },
+                    "game": {
+                        "S": "We Didn't Playtest This at All"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/WeDidntPlaytestThisatAll.jpg"
+                    },
+                    "link": {
+                        "S": "https://www.amazon.com/Asmadi-Games-Didnt-Playtest-This/dp/B001N11OI2"
+                    },
+                    "order": {
+                        "N": "12"
+                    },
+                    "players": {
+                        "S": "2+"
+                    },
+                    "publisher": {
+                        "S": "Asmadi Games"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/thumbs/WeDidntPlaytestThisatAll.jpg"
+                    },
+                    "time": {
+                        "S": "1-10"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ages": {
+                        "S": "12+"
+                    },
+                    "bgg": {
+                        "S": "https://boardgamegeek.com/boardgame/42448/we-didnt-playtest-either"
+                    },
+                    "bggrating": {
+                        "N": "6"
+                    },
+                    "collection_id": {
+                        "S": "adam_boardgames"
+                    },
+                    "game": {
+                        "S": "We Didn't Playtest This Either"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/WeDidntPlaytestThisEither.jpg"
+                    },
+                    "link": {
+                        "S": "https://www.amazon.com/Didnt-Playtest-This-Either-Card/dp/B0039L0RXM"
+                    },
+                    "order": {
+                        "N": "13"
+                    },
+                    "players": {
+                        "S": "2+"
+                    },
+                    "publisher": {
+                        "S": "Asmadi Games"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/thumbs/WeDidntPlaytestThisEither.jpg"
+                    },
+                    "time": {
+                        "S": "1-10"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "ages": {
+                        "S": "8+"
+                    },
+                    "bgg": {
+                        "S": "https://boardgamegeek.com/boardgame/245422/werewords-deluxe-edition"
+                    },
+                    "bggrating": {
+                        "N": "7.7"
+                    },
+                    "collection_id": {
+                        "S": "adam_boardgames"
+                    },
+                    "game": {
+                        "S": "Werewords (Deluxe Edition) The Hidden Idenity Word Game"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/Werewords.jpg"
+                    },
+                    "link": {
+                        "S": "https://www.amazon.com/Bezier-Games-WWDXBEZ-Werewords-Deluxe/dp/B07CW4BP7Z"
+                    },
+                    "order": {
+                        "N": "14"
+                    },
+                    "players": {
+                        "S": "2-20"
+                    },
+                    "publisher": {
+                        "S": "Bézier Games"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/thumbs/Werewords.jpg"
+                    },
+                    "time": {
+                        "N": "10"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        }
+    ]
+}

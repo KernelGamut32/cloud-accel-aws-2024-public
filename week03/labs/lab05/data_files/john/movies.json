@@ -1,0 +1,552 @@
+{
+    "collectors": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "john_movies"
+                    },
+                    "director": {
+                        "S": "John Carpenter"
+                    },
+                    "format": {
+                        "S": "Blu-ray"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/MouthofMadnessBR.jpg"
+                    },
+                    "order": {
+                        "N": "1"
+                    },
+                    "release date": {
+                        "S": "February 3 1995"
+                    },
+                    "runtime": {
+                        "S": "95 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Sam Neill"
+                            },
+                            {
+                                "S": "Jürgen Prochnow"
+                            },
+                            {
+                                "S": "Julie Carmen"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/thumbs/MouthofMadnessBR.jpg"
+                    },
+                    "title": {
+                        "S": "In The Mouth of Madness"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "S": "Michael De Luca"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "john_movies"
+                    },
+                    "director": {
+                        "S": "John Carpenter"
+                    },
+                    "format": {
+                        "S": "Blu-ray"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/TheThingBR.jpg"
+                    },
+                    "order": {
+                        "N": "2"
+                    },
+                    "release date": {
+                        "S": "June 25 1982"
+                    },
+                    "runtime": {
+                        "S": "109 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Kurt Russel"
+                            },
+                            {
+                                "S": "Wiford Brimley"
+                            },
+                            {
+                                "S": "Keith David"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/thumbs/TheThingBR.jpg"
+                    },
+                    "title": {
+                        "S": "The Thing"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "L": [
+                            {
+                                "S": "Bill Lancaster"
+                            },
+                            {
+                                "S": "John W. Campbell Jr."
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "john_movies"
+                    },
+                    "director": {
+                        "S": "Paul W.S. Anderson"
+                    },
+                    "format": {
+                        "S": "Blu-ray"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/EventHorizonBR.jpg"
+                    },
+                    "order": {
+                        "N": "3"
+                    },
+                    "release date": {
+                        "S": "August 15 1997"
+                    },
+                    "runtime": {
+                        "S": "96 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Laurence Fishburne"
+                            },
+                            {
+                                "S": "Sam Neill"
+                            },
+                            {
+                                "S": "Kathleen Quinlan"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/thumbs/EventHorizonBR.jpg"
+                    },
+                    "title": {
+                        "S": "Event Horizon"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "S": "Phillip Eisner"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "john_movies"
+                    },
+                    "director": {
+                        "S": "David Cronenberg"
+                    },
+                    "format": {
+                        "S": "Blu-ray"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/ScannersBR.jpg"
+                    },
+                    "order": {
+                        "N": "4"
+                    },
+                    "release date": {
+                        "S": "January 14 1981"
+                    },
+                    "runtime": {
+                        "S": "103 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Jennifer O'Neill"
+                            },
+                            {
+                                "S": "Stephen Lack"
+                            },
+                            {
+                                "S": "Patrick McGoohan"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/thumbs/ScannersBR.jpg"
+                    },
+                    "title": {
+                        "S": "Scanners"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "S": "David Cronenberg"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "john_movies"
+                    },
+                    "director": {
+                        "S": "Alex Proyas"
+                    },
+                    "format": {
+                        "S": "Blu-ray"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/DarkCityBR.jpg"
+                    },
+                    "order": {
+                        "N": "5"
+                    },
+                    "release date": {
+                        "S": "February 27 1998"
+                    },
+                    "runtime": {
+                        "S": "100 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Rufus Sewell"
+                            },
+                            {
+                                "S": "Keifer Sutherland"
+                            },
+                            {
+                                "S": "Jennifer Connelly"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/thumbs/DarkCityBR.jpg"
+                    },
+                    "title": {
+                        "S": "Dark City"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "S": "Alex Proyas"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "john_movies"
+                    },
+                    "director": {
+                        "S": "Don Coscarelli"
+                    },
+                    "format": {
+                        "S": "DVD"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/BubbaHotepDVD.jpg"
+                    },
+                    "order": {
+                        "N": "6"
+                    },
+                    "release date": {
+                        "S": "October 10 2003"
+                    },
+                    "runtime": {
+                        "S": "92 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Bruce Campbell"
+                            },
+                            {
+                                "S": "Ossie Davis"
+                            },
+                            {
+                                "S": "Bob Ivy"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/thumbs/BubbaHotepDVD.jpg"
+                    },
+                    "title": {
+                        "S": "Bubba Ho-Tep"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "L": [
+                            {
+                                "S": "Joe R. Landsdale"
+                            },
+                            {
+                                "S": "Don Coscarelli."
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "john_movies"
+                    },
+                    "director": {
+                        "S": "Katsuhiro Otomo"
+                    },
+                    "format": {
+                        "S": "Blu-ray"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/AkiraBR.jpg"
+                    },
+                    "order": {
+                        "N": "7"
+                    },
+                    "release date": {
+                        "S": "July 16 1988"
+                    },
+                    "runtime": {
+                        "S": "124 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Mitsuo Iwata"
+                            },
+                            {
+                                "S": "Nozomu Sasaki"
+                            },
+                            {
+                                "S": "Mami Koyama"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/thumbs/AkiraBR.jpg"
+                    },
+                    "title": {
+                        "S": "Akira"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "S": "Katsuhiro Otomo"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "john_movies"
+                    },
+                    "director": {
+                        "S": "Terry Gilliam"
+                    },
+                    "format": {
+                        "S": "DVD"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/TimeBanditsDVD.jpg"
+                    },
+                    "order": {
+                        "N": "8"
+                    },
+                    "release date": {
+                        "S": "November 6 1981"
+                    },
+                    "runtime": {
+                        "S": "116 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Sean Connery"
+                            },
+                            {
+                                "S": "Shelley Duvall"
+                            },
+                            {
+                                "S": "John Cleese"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/thumbs/TimeBanditsDVD.jpg"
+                    },
+                    "title": {
+                        "S": "Time Bandits"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "L": [
+                            {
+                                "S": "Michael Palin"
+                            },
+                            {
+                                "S": "Terry Gilliam"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "john_movies"
+                    },
+                    "director": {
+                        "S": "James Gunn"
+                    },
+                    "format": {
+                        "S": "DVD"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/SlitherDVD.jpg"
+                    },
+                    "order": {
+                        "N": "9"
+                    },
+                    "release date": {
+                        "S": "March 31 2006"
+                    },
+                    "runtime": {
+                        "S": "95 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Nathan Fillion"
+                            },
+                            {
+                                "S": "Elizabeth Banks"
+                            },
+                            {
+                                "S": "Michael Rooker"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/thumbs/SlitherDVD.jpg"
+                    },
+                    "title": {
+                        "S": "Slither"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "S": "James Gunn"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "john_movies"
+                    },
+                    "director": {
+                        "S": "Denis Villeneuve"
+                    },
+                    "format": {
+                        "S": "Blu-ray"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/ArrivalBR.jpg"
+                    },
+                    "order": {
+                        "N": "10"
+                    },
+                    "release date": {
+                        "S": "November 11 2016"
+                    },
+                    "runtime": {
+                        "S": "116 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Amy Adams"
+                            },
+                            {
+                                "S": "Jeremy Renner"
+                            },
+                            {
+                                "S": "Forest Whitaker"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/thumbs/ArrivalBR.jpg"
+                    },
+                    "title": {
+                        "S": "Arrival"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "L": [
+                            {
+                                "S": "Eric Heisserer"
+                            },
+                            {
+                                "S": "Ted Chiang"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    ]
+}

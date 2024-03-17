@@ -1,0 +1,571 @@
+{
+    "collectors": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Himanshu Sharma"
+                    },
+                    "collection_id": {
+                        "S": "corey_books"
+                    },
+                    "format": {
+                        "S": "pdf"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/kalilinux.jpg"
+                    },
+                    "isbn": {
+                        "N": "9781789952308"
+                    },
+                    "languages": {
+                        "S": "eng"
+                    },
+                    "order": {
+                        "N": "1"
+                    },
+                    "pubdate": {
+                        "S": "2019-03-29T00:00:00-04:00"
+                    },
+                    "publisher": {
+                        "S": "Packt Publishing"
+                    },
+                    "tags": {
+                        "L": [
+                            {
+                                "S": "IT"
+                            },
+                            {
+                                "S": "Linux"
+                            },
+                            {
+                                "S": "Security"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/thumbs/kalilinux.jpg"
+                    },
+                    "title": {
+                        "S": "Kali Linux - an Ethical Hacker's Cookbook - Second Edition"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Mitch Tulloch"
+                    },
+                    "collection_id": {
+                        "S": "corey_books"
+                    },
+                    "format": {
+                        "S": "pdf"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/introducingwindows.jpg"
+                    },
+                    "isbn": {
+                        "N": "9780735682894"
+                    },
+                    "languages": {
+                        "S": "eng"
+                    },
+                    "order": {
+                        "N": "2"
+                    },
+                    "pubdate": {
+                        "S": "2013-11-15T00:00:00-05:00"
+                    },
+                    "publisher": {
+                        "S": "Microsoft Press"
+                    },
+                    "rating": {
+                        "N": "4"
+                    },
+                    "tags": {
+                        "L": [
+                            {
+                                "S": "Computers"
+                            },
+                            {
+                                "S": "Operating Systems"
+                            },
+                            {
+                                "S": "Virtualization"
+                            },
+                            {
+                                "S": "Client-Server Computing"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/thumbs/introducingwindows.jpg"
+                    },
+                    "title": {
+                        "S": "Windows Server Introducing Windows Azure for IT Professionals"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Michael Collier & Robin Shahan"
+                    },
+                    "collection_id": {
+                        "S": "corey_books"
+                    },
+                    "format": {
+                        "S": "epub"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/azureessentials.jpg"
+                    },
+                    "isbn": {
+                        "N": "9781509300907"
+                    },
+                    "languages": {
+                        "S": "eng"
+                    },
+                    "order": {
+                        "N": "3"
+                    },
+                    "pubdate": {
+                        "S": "2015-01-15T00:00:00-05:00"
+                    },
+                    "publisher": {
+                        "S": "Microsoft Press"
+                    },
+                    "rating": {
+                        "N": "5"
+                    },
+                    "tags": {
+                        "L": [
+                            {
+                                "S": "Azure"
+                            },
+                            {
+                                "S": "Cloud"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/thumbs/azureessentials.jpg"
+                    },
+                    "title": {
+                        "S": "Fundamentals of Azure - Microsoft Azure Essentials"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Michael McKeown"
+                    },
+                    "collection_id": {
+                        "S": "corey_books"
+                    },
+                    "format": {
+                        "S": "epub"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/azureautomation.jpg"
+                    },
+                    "isbn": {
+                        "N": "9780735698161"
+                    },
+                    "languages": {
+                        "S": "eng"
+                    },
+                    "order": {
+                        "N": "4"
+                    },
+                    "pubdate": {
+                        "S": "2015-04-10T00:00:00-04:00"
+                    },
+                    "publisher": {
+                        "S": "Microsoft Press"
+                    },
+                    "tags": {
+                        "L": [
+                            {
+                                "S": "Computers"
+                            },
+                            {
+                                "S": "Operating Systems"
+                            },
+                            {
+                                "S": "Windows Server"
+                            },
+                            {
+                                "S": "Azure"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/thumbs/azureautomation.jpg"
+                    },
+                    "title": {
+                        "S": "Microsoft Azure Essentials - Azure Automation"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Jeff Barnes"
+                    },
+                    "collection_id": {
+                        "S": "corey_books"
+                    },
+                    "format": {
+                        "S": "epub"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/azuremachinelearning.jpg"
+                    },
+                    "isbn": {
+                        "N": "9780735698185"
+                    },
+                    "languages": {
+                        "S": "eng"
+                    },
+                    "order": {
+                        "N": "5"
+                    },
+                    "pubdate": {
+                        "S": "2015-04-25T00:00:00-04:00"
+                    },
+                    "publisher": {
+                        "S": "Microsoft Press"
+                    },
+                    "tags": {
+                        "L": [
+                            {
+                                "S": "Computers"
+                            },
+                            {
+                                "S": "Operating Systems"
+                            },
+                            {
+                                "S": "Windows Server"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/thumbs/azuremachinelearning.jpg"
+                    },
+                    "title": {
+                        "S": "Microsoft Azure Essentials - Azure Machine Learning"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Mark Lutz"
+                    },
+                    "collection_id": {
+                        "S": "corey_books"
+                    },
+                    "format": {
+                        "S": "pdf"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/learningpython.jpg"
+                    },
+                    "isbn": {
+                        "N": "9781449355739"
+                    },
+                    "languages": {
+                        "S": "eng"
+                    },
+                    "order": {
+                        "N": "6"
+                    },
+                    "pubdate": {
+                        "S": "2013-07-09T00:00:00-04:00"
+                    },
+                    "publisher": {
+                        "S": "O'Reilly Media"
+                    },
+                    "rating": {
+                        "N": "4"
+                    },
+                    "tags": {
+                        "L": [
+                            {
+                                "S": "IT"
+                            },
+                            {
+                                "S": "Programming"
+                            },
+                            {
+                                "S": "Python"
+                            },
+                            {
+                                "S": "DevOps"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/thumbs/learningpython.jpg"
+                    },
+                    "title": {
+                        "S": "Learning Python 5th Edition"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Eldad Eilam"
+                    },
+                    "collection_id": {
+                        "S": "corey_books"
+                    },
+                    "format": {
+                        "S": "pdf"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/reversing.jpg"
+                    },
+                    "isbn": {
+                        "N": "9788126506040"
+                    },
+                    "languages": {
+                        "S": "eng"
+                    },
+                    "order": {
+                        "N": "7"
+                    },
+                    "pubdate": {
+                        "S": "2005-05-15T00:00:00-04:00"
+                    },
+                    "publisher": {
+                        "S": "Wiley"
+                    },
+                    "rating": {
+                        "N": "4"
+                    },
+                    "tags": {
+                        "S": "Team DDU"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/thumbs/reversing.jpg"
+                    },
+                    "title": {
+                        "S": "Reversing: Secrets of Reverse Engineering"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Kevin D. Mitnick & William L. Simon"
+                    },
+                    "collection_id": {
+                        "S": "corey_books"
+                    },
+                    "format": {
+                        "S": "pdf"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/artofdeception.jpg"
+                    },
+                    "isbn": {
+                        "N": "9780764538391"
+                    },
+                    "languages": {
+                        "S": "eng"
+                    },
+                    "order": {
+                        "N": "8"
+                    },
+                    "pubdate": {
+                        "S": "2007-08-20T00:00:00-04:00"
+                    },
+                    "publisher": {
+                        "S": "Wiley"
+                    },
+                    "rating": {
+                        "N": "4"
+                    },
+                    "tags": {
+                        "L": [
+                            {
+                                "S": "Computers"
+                            },
+                            {
+                                "S": "Security"
+                            },
+                            {
+                                "S": "General"
+                            },
+                            {
+                                "S": "Networking"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/thumbs/artofdeception.jpg"
+                    },
+                    "title": {
+                        "S": "The Art of Deception: Controlling the Human Element of Security"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Phil Carradice"
+                    },
+                    "collection_id": {
+                        "S": "corey_books"
+                    },
+                    "format": {
+                        "S": "epub"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/bloodymary.jpg"
+                    },
+                    "isbn": {
+                        "N": "9781526728661"
+                    },
+                    "languages": {
+                        "S": "eng"
+                    },
+                    "order": {
+                        "N": "9"
+                    },
+                    "pubdate": {
+                        "S": "2018-06-30T00:00:00-04:00"
+                    },
+                    "publisher": {
+                        "S": "Grub Street Publishers"
+                    },
+                    "tags": {
+                        "L": [
+                            {
+                                "S": "Biography & Autobiography"
+                            },
+                            {
+                                "S": "Royalty"
+                            },
+                            {
+                                "S": "History"
+                            },
+                            {
+                                "S": "Europe"
+                            },
+                            {
+                                "S": "Great Britain"
+                            },
+                            {
+                                "S": "General"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/thumbs/bloodymary.jpg"
+                    },
+                    "title": {
+                        "S": "Bloody Mary: Tudor Terror 1553–1558"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Benjamin Madley"
+                    },
+                    "collection_id": {
+                        "S": "corey_books"
+                    },
+                    "format": {
+                        "S": "pdf"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/americangenocide.jpg"
+                    },
+                    "languages": {
+                        "S": "eng"
+                    },
+                    "order": {
+                        "N": "10"
+                    },
+                    "pubdate": {
+                        "S": "2016-02-24T22:34:31-05:00"
+                    },
+                    "publisher": {
+                        "S": "Yale University Press"
+                    },
+                    "tags": {
+                        "L": [
+                            {
+                                "S": "History"
+                            },
+                            {
+                                "S": "United States"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/thumbs/americangenocide.jpg"
+                    },
+                    "title": {
+                        "S": "An American Genocide"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        }
+    ]
+}

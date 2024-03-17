@@ -1,0 +1,166 @@
+{
+    "collectors": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "collections": {
+                        "L": [
+                            {
+                                "S": "comics"
+                            },
+                            {
+                                "S": "movies"
+                            }
+                        ]
+                    },
+                    "friends": {
+                        "L": [
+                            {
+                                "S": "adam"
+                            },
+                            {
+                                "S": "corey"
+                            },
+                            {
+                                "S": "craig"
+                            }
+                        ]
+                    },
+                    "full_name": {
+                        "S": "John Hanna"
+                    },
+                    "location": {
+                        "S": "Washington USA"
+                    },
+                    "picture": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/john.png"
+                    },
+                    "type": {
+                        "S": "profile"
+                    },
+                    "uid": {
+                        "S": "john"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collections": {
+                        "L": [
+                            {
+                                "S": "movies"
+                            },
+                            {
+                                "S": "boardgames"
+                            }
+                        ]
+                    },
+                    "friends": {
+                        "L": [
+                            {
+                                "S": "john"
+                            },
+                            {
+                                "S": "corey"
+                            },
+                            {
+                                "S": "craig"
+                            }
+                        ]
+                    },
+                    "full_name": {
+                        "S": "Adam Vincent"
+                    },
+                    "location": {
+                        "S": "Connecticut USA"
+                    },
+                    "picture": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/adam.png"
+                    },
+                    "type": {
+                        "S": "profile"
+                    },
+                    "uid": {
+                        "S": "adam"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collections": {
+                        "S": "instruments"
+                    },
+                    "friends": {
+                        "L": [
+                            {
+                                "S": "john"
+                            },
+                            {
+                                "S": "adam"
+                            },
+                            {
+                                "S": "corey"
+                            }
+                        ]
+                    },
+                    "full_name": {
+                        "S": "Craig Parker"
+                    },
+                    "location": {
+                        "S": "Maine USA"
+                    },
+                    "picture": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/craig.png"
+                    },
+                    "type": {
+                        "S": "profile"
+                    },
+                    "uid": {
+                        "S": "craig"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collections": {
+                        "S": "books"
+                    },
+                    "friends": {
+                        "L": [
+                            {
+                                "S": "john"
+                            },
+                            {
+                                "S": "adam"
+                            },
+                            {
+                                "S": "craig"
+                            }
+                        ]
+                    },
+                    "full_name": {
+                        "S": "Corey Knapp"
+                    },
+                    "location": {
+                        "S": "North Carolina USA"
+                    },
+                    "picture": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/corey.png"
+                    },
+                    "type": {
+                        "S": "profile"
+                    },
+                    "uid": {
+                        "S": "corey"
+                    }
+                }
+            }
+        }
+    ]
+}

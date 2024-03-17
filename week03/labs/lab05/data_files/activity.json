@@ -1,0 +1,268 @@
+{
+    "collectors": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "action": {
+                        "S": "added"
+                    },
+                    "collection": {
+                        "S": "john_movies"
+                    },
+                    "date": {
+                        "S": "2020-01-20"
+                    },
+                    "imgurl": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/thumbs/ArrivalBR.jpg"
+                    },
+                    "itemname": {
+                        "S": "Arrival"
+                    },
+                    "type": {
+                        "S": "activity"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "action": {
+                        "S": "added"
+                    },
+                    "collection": {
+                        "S": "john_movies"
+                    },
+                    "date": {
+                        "S": "2019-10-30"
+                    },
+                    "imgurl": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/movies/thumbs/SlitherDVD.jpg"
+                    },
+                    "itemname": {
+                        "S": "Slither"
+                    },
+                    "type": {
+                        "S": "activity"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "action": {
+                        "S": "added"
+                    },
+                    "collection": {
+                        "S": "john_comics"
+                    },
+                    "date": {
+                        "S": "2020-01-03"
+                    },
+                    "imgurl": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/thumbs/Venomvol1.jpg"
+                    },
+                    "itemname": {
+                        "S": "Vemon(2018) Rex (Vol 1)"
+                    },
+                    "type": {
+                        "S": "activity"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "action": {
+                        "S": "added"
+                    },
+                    "collection": {
+                        "S": "john_comics"
+                    },
+                    "date": {
+                        "S": "2020-01-03"
+                    },
+                    "imgurl": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/thumbs/Akiravol5.jpg"
+                    },
+                    "itemname": {
+                        "S": "Akira Vol 5"
+                    },
+                    "type": {
+                        "S": "activity"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "action": {
+                        "S": "added"
+                    },
+                    "collection": {
+                        "S": "adam_movies"
+                    },
+                    "date": {
+                        "S": "2020-01-15"
+                    },
+                    "imgurl": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thumbs/zombielandDVD.jpg"
+                    },
+                    "itemname": {
+                        "S": "Zombieland"
+                    },
+                    "type": {
+                        "S": "activity"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "action": {
+                        "S": "added"
+                    },
+                    "collection": {
+                        "S": "adam_movies"
+                    },
+                    "date": {
+                        "S": "2020-01-05"
+                    },
+                    "imgurl": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thumbs/vforvendettaDVD.jpg"
+                    },
+                    "itemname": {
+                        "S": "V for Vendetta"
+                    },
+                    "type": {
+                        "S": "activity"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "action": {
+                        "S": "added"
+                    },
+                    "collection": {
+                        "S": "adam_boardgames"
+                    },
+                    "date": {
+                        "S": "2019-09-13"
+                    },
+                    "imgurl": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/boardgames/thumbs/Werewords.jpg"
+                    },
+                    "itemname": {
+                        "S": "Werewords"
+                    },
+                    "type": {
+                        "S": "activity"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "action": {
+                        "S": "added"
+                    },
+                    "collection": {
+                        "S": "craig_guitars"
+                    },
+                    "date": {
+                        "S": "2019-11-20"
+                    },
+                    "imgurl": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/thumbs/11.jpg"
+                    },
+                    "itemname": {
+                        "S": "DIY Kit Blue 5-String"
+                    },
+                    "type": {
+                        "S": "activity"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "action": {
+                        "S": "added"
+                    },
+                    "collection": {
+                        "S": "craig_guitars"
+                    },
+                    "date": {
+                        "S": "2019-01-30"
+                    },
+                    "imgurl": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/thumbs/12.jpg"
+                    },
+                    "itemname": {
+                        "S": "Ibanez G10"
+                    },
+                    "type": {
+                        "S": "activity"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "action": {
+                        "S": "added"
+                    },
+                    "collection": {
+                        "S": "corey_books"
+                    },
+                    "date": {
+                        "S": "2019-11-29"
+                    },
+                    "imgurl": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/thumbs/americangenocide.jpg"
+                    },
+                    "itemname": {
+                        "S": "An American Genocide"
+                    },
+                    "type": {
+                        "S": "activity"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "action": {
+                        "S": "added"
+                    },
+                    "collection": {
+                        "S": "corey_books"
+                    },
+                    "date": {
+                        "S": "2019-03-13"
+                    },
+                    "imgurl": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/corey/books/thumbs/bloodymary.jpg"
+                    },
+                    "itemname": {
+                        "S": "Bloody Mary: Tudor Terror"
+                    },
+                    "type": {
+                        "S": "activity"
+                    }
+                }
+            }
+        }
+    ]
+}

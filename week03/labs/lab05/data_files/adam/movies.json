@@ -1,0 +1,965 @@
+{
+    "collectors": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "adam_movies"
+                    },
+                    "director": {
+                        "S": "Peter Howitt"
+                    },
+                    "format": {
+                        "S": "DVD"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/antitrustDVD.jpg"
+                    },
+                    "order": {
+                        "N": "1"
+                    },
+                    "release date": {
+                        "S": "2001-01-12"
+                    },
+                    "runtime": {
+                        "S": "108 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Ryan Philippe"
+                            },
+                            {
+                                "S": "Tim Robbins"
+                            },
+                            {
+                                "S": "Rachael Leigh Cook"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thumbs/antitrustDVD.jpg"
+                    },
+                    "title": {
+                        "S": "Antitrust"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "S": "Howard Franklin"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "adam_movies"
+                    },
+                    "director": {
+                        "S": "Sam Raimi"
+                    },
+                    "format": {
+                        "S": "DVD"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/armyofdarknessDVD.jpg"
+                    },
+                    "order": {
+                        "N": "2"
+                    },
+                    "release date": {
+                        "S": "1993-02-19"
+                    },
+                    "runtime": {
+                        "S": "81 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Bruce Campbell"
+                            },
+                            {
+                                "S": "Embeth Davidtz"
+                            },
+                            {
+                                "S": "Marcus Gilbert"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thumbs/armyofdarknessDVD.jpg"
+                    },
+                    "title": {
+                        "S": "Army of Darkness"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "L": [
+                            {
+                                "S": "Sam Raimi"
+                            },
+                            {
+                                "S": "Ivan Raimi"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "adam_movies"
+                    },
+                    "director": {
+                        "L": [
+                            {
+                                "S": "Joel Coen"
+                            },
+                            {
+                                "S": "Ethan Coen"
+                            }
+                        ]
+                    },
+                    "format": {
+                        "S": "DVD"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thebiglebowskiDVD.jpg"
+                    },
+                    "order": {
+                        "N": "3"
+                    },
+                    "release date": {
+                        "S": "1998-03-06"
+                    },
+                    "runtime": {
+                        "S": "117 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Jeff Bridges"
+                            },
+                            {
+                                "S": "John Goodman"
+                            },
+                            {
+                                "S": "Julianne Moore"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thumbs/thebiglebowskiDVD.jpg"
+                    },
+                    "title": {
+                        "S": "Big Lebowski"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "L": [
+                            {
+                                "S": "Ethan Coen"
+                            },
+                            {
+                                "S": "Joel Coen"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "adam_movies"
+                    },
+                    "director": {
+                        "S": "Ivan Reitman"
+                    },
+                    "format": {
+                        "S": "DVD"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/ghostbustersDVD.jpg"
+                    },
+                    "order": {
+                        "N": "4"
+                    },
+                    "release date": {
+                        "S": "1984-06-08"
+                    },
+                    "runtime": {
+                        "S": "105 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Bill Murray"
+                            },
+                            {
+                                "S": "Dan Akroyd"
+                            },
+                            {
+                                "S": "SIgourney Weaver"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thumbs/ghostbustersDVD.jpg"
+                    },
+                    "title": {
+                        "S": "Ghostbusters"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "L": [
+                            {
+                                "S": "Dan Akroyd"
+                            },
+                            {
+                                "S": "Harold Ramis"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "adam_movies"
+                    },
+                    "director": {
+                        "S": "Harold Ramis"
+                    },
+                    "format": {
+                        "S": "DVD"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/groundhogdayDVD.jpg"
+                    },
+                    "order": {
+                        "N": "5"
+                    },
+                    "release date": {
+                        "S": "1993-02-12"
+                    },
+                    "runtime": {
+                        "S": "101 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Bill Murray"
+                            },
+                            {
+                                "S": "Andie MacDowell"
+                            },
+                            {
+                                "S": "Chris Elliott"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thumbs/groundhogdayDVD.jpg"
+                    },
+                    "title": {
+                        "S": "Groundhog Day"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "L": [
+                            {
+                                "S": "Danny Rubin"
+                            },
+                            {
+                                "S": "Harold Ramis"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "adam_movies"
+                    },
+                    "director": {
+                        "S": "Iain Softley"
+                    },
+                    "format": {
+                        "S": "DVD"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/hackersDVD.jpg"
+                    },
+                    "order": {
+                        "N": "6"
+                    },
+                    "release date": {
+                        "S": "1995-09-15"
+                    },
+                    "runtime": {
+                        "S": "105 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Jonny Lee Miller"
+                            },
+                            {
+                                "S": "Angelina Jolie"
+                            },
+                            {
+                                "S": "Jesse Bradford"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thumbs/hackersDVD.jpg"
+                    },
+                    "title": {
+                        "S": "Hackers"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "S": "Rafael Moreu"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "adam_movies"
+                    },
+                    "director": {
+                        "S": "Mel Brooks"
+                    },
+                    "format": {
+                        "S": "DVD"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/historyoftheworldDVD.jpg"
+                    },
+                    "order": {
+                        "N": "7"
+                    },
+                    "release date": {
+                        "S": "1981-06-12"
+                    },
+                    "runtime": {
+                        "S": "92 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Mel Brooks"
+                            },
+                            {
+                                "S": "Gregory Hines"
+                            },
+                            {
+                                "S": "Dom DeLuise"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thumbs/historyoftheworldDVD.jpg"
+                    },
+                    "title": {
+                        "S": "History of the World Part 1"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "S": "Mel Brooks"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "adam_movies"
+                    },
+                    "director": {
+                        "S": "Barry Sonnenfeld"
+                    },
+                    "format": {
+                        "S": "DVD"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/mibDVD.jpg"
+                    },
+                    "order": {
+                        "N": "8"
+                    },
+                    "release date": {
+                        "S": "1997-07-02"
+                    },
+                    "runtime": {
+                        "S": "98 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Tommy Lee Jones"
+                            },
+                            {
+                                "S": "Will Smith"
+                            },
+                            {
+                                "S": "Linda Fiorentino"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thumbs/mibDVD.jpg"
+                    },
+                    "title": {
+                        "S": "Men in Black"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "L": [
+                            {
+                                "S": "Lowell Cunningham"
+                            },
+                            {
+                                "S": "Ed Solomon"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "adam_movies"
+                    },
+                    "director": {
+                        "S": "Todd Philips"
+                    },
+                    "format": {
+                        "S": "DVD"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/oldschoolDVD.jpg"
+                    },
+                    "order": {
+                        "N": "9"
+                    },
+                    "release date": {
+                        "S": "2003-02-21"
+                    },
+                    "runtime": {
+                        "S": "88 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Luke Wilson"
+                            },
+                            {
+                                "S": "Vince Vaughn"
+                            },
+                            {
+                                "S": "Will Ferrell"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thumbs/oldschoolDVD.jpg"
+                    },
+                    "title": {
+                        "S": "Old School"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "L": [
+                            {
+                                "S": "Court Crandall"
+                            },
+                            {
+                                "S": "Todd Phillips"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "adam_movies"
+                    },
+                    "director": {
+                        "S": "Ron Reiner"
+                    },
+                    "format": {
+                        "S": "DVD"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/princessbrideDVD.jpg"
+                    },
+                    "order": {
+                        "N": "10"
+                    },
+                    "release date": {
+                        "S": "1987-10-09"
+                    },
+                    "runtime": {
+                        "S": "98 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Cary Elwes"
+                            },
+                            {
+                                "S": "Mandy Patinkin"
+                            },
+                            {
+                                "S": "Robin Wright"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thumbs/princessbrideDVD.jpg"
+                    },
+                    "title": {
+                        "S": "Princess Bride"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "S": "William Goldman"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "adam_movies"
+                    },
+                    "director": {
+                        "S": "John G Avildsen"
+                    },
+                    "format": {
+                        "S": "DVD"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/rockyDVD.jpg"
+                    },
+                    "order": {
+                        "N": "11"
+                    },
+                    "release date": {
+                        "S": "1976-12-03"
+                    },
+                    "runtime": {
+                        "S": "120 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Sylvester Stallone"
+                            },
+                            {
+                                "S": "Talia Shire"
+                            },
+                            {
+                                "S": "Burt Young"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thumbs/rockyDVD.jpg"
+                    },
+                    "title": {
+                        "S": "Rocky"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "S": "Sylvester Stallone"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "adam_movies"
+                    },
+                    "director": {
+                        "S": "Brett Ratner"
+                    },
+                    "format": {
+                        "S": "DVD"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/rushhourDVD.jpg"
+                    },
+                    "order": {
+                        "N": "12"
+                    },
+                    "release date": {
+                        "S": "1998-09-18"
+                    },
+                    "runtime": {
+                        "S": "98 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Jackie Chan"
+                            },
+                            {
+                                "S": "Chris Tucker"
+                            },
+                            {
+                                "S": "Ken Leung"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thumbs/rushhourDVD.jpg"
+                    },
+                    "title": {
+                        "S": "Rush Hour"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "L": [
+                            {
+                                "S": "Ross LaManna"
+                            },
+                            {
+                                "S": "Jim Kouf"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "adam_movies"
+                    },
+                    "director": {
+                        "S": "Anthony C. Ferrante"
+                    },
+                    "format": {
+                        "S": "DVD"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/sharknadoDVD.jpg"
+                    },
+                    "order": {
+                        "N": "13"
+                    },
+                    "release date": {
+                        "S": "2013-07-11"
+                    },
+                    "runtime": {
+                        "S": "86 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Ian Ziering"
+                            },
+                            {
+                                "S": "Tara Reid"
+                            },
+                            {
+                                "S": "John Heard"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thumbs/sharknadoDVD.jpg"
+                    },
+                    "title": {
+                        "S": "Sharknado"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "S": "Thunder Levin"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "adam_movies"
+                    },
+                    "director": {
+                        "S": "Joe Pytka"
+                    },
+                    "format": {
+                        "S": "DVD"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/spacejamDVD.jpg"
+                    },
+                    "order": {
+                        "N": "14"
+                    },
+                    "release date": {
+                        "S": "1996-11-15"
+                    },
+                    "runtime": {
+                        "S": "88 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Michael Jordan"
+                            },
+                            {
+                                "S": "Wayne Knight"
+                            },
+                            {
+                                "S": "Theresa Randle"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thumbs/spacejamDVD.jpg"
+                    },
+                    "title": {
+                        "S": "Space Jam"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "L": [
+                            {
+                                "S": "Leo Benvenuti"
+                            },
+                            {
+                                "S": "Steve Rudnick"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "adam_movies"
+                    },
+                    "director": {
+                        "S": "Mel Brooks"
+                    },
+                    "format": {
+                        "S": "DVD"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/spaceballsDVD.jpg"
+                    },
+                    "order": {
+                        "N": "15"
+                    },
+                    "release date": {
+                        "S": "1987-06-24"
+                    },
+                    "runtime": {
+                        "N": "96"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Mel Brooks"
+                            },
+                            {
+                                "S": "John Candy"
+                            },
+                            {
+                                "S": "Rick Morani"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thumbs/spaceballsDVD.jpg"
+                    },
+                    "title": {
+                        "S": "Spaceballs"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "L": [
+                            {
+                                "S": "Mel Brooks"
+                            },
+                            {
+                                "S": "Thomas Meehan"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "adam_movies"
+                    },
+                    "director": {
+                        "S": "James McTeigue"
+                    },
+                    "format": {
+                        "S": "Blu-Ray"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/vforvendettaDVD.jpg"
+                    },
+                    "order": {
+                        "N": "16"
+                    },
+                    "release date": {
+                        "S": "2006-03-17"
+                    },
+                    "runtime": {
+                        "S": "132 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Hugo Weaving"
+                            },
+                            {
+                                "S": "Natalie Portman"
+                            },
+                            {
+                                "S": "Rupert Graves"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thumbs/vforvendettaDVD.jpg"
+                    },
+                    "title": {
+                        "S": "V for Vendetta"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "S": "The Wachowski Brothers"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "adam_movies"
+                    },
+                    "director": {
+                        "S": "Ruben Fleischer"
+                    },
+                    "format": {
+                        "S": "DVD"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/zombielandDVD.jpg"
+                    },
+                    "order": {
+                        "N": "17"
+                    },
+                    "release date": {
+                        "S": "2009-10-02"
+                    },
+                    "runtime": {
+                        "S": "88 min"
+                    },
+                    "starring": {
+                        "L": [
+                            {
+                                "S": "Jesse Eisenberg"
+                            },
+                            {
+                                "S": "Emma Stone"
+                            },
+                            {
+                                "S": "Woody Harrelson"
+                            }
+                        ]
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/adam/movies/thumbs/zombielandDVD.jpg"
+                    },
+                    "title": {
+                        "S": "Zombieland"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "writer": {
+                        "L": [
+                            {
+                                "S": "Rhett Reese"
+                            },
+                            {
+                                "S": "Paul Wernick"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,499 @@
+{
+    "collectors": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Katsuhiro Otomo"
+                    },
+                    "collection_id": {
+                        "S": "john_comics"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/Akiravol1.jpg"
+                    },
+                    "isbn": {
+                        "N": "1935429000"
+                    },
+                    "order": {
+                        "N": "1"
+                    },
+                    "pages": {
+                        "N": "352"
+                    },
+                    "pencil": {
+                        "S": "Katsuhiro Otomo"
+                    },
+                    "published date": {
+                        "S": "October 31 2009"
+                    },
+                    "publisher": {
+                        "S": "Kodansha Comics"
+                    },
+                    "series": {
+                        "S": "Akira"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/thumbs/Akiravol1.jpg"
+                    },
+                    "title": {
+                        "S": "Akira Vol 1"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Katsuhiro Otomo"
+                    },
+                    "collection_id": {
+                        "S": "john_comics"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/Akiravol2.jpg"
+                    },
+                    "isbn": {
+                        "N": "1935429027"
+                    },
+                    "order": {
+                        "N": "2"
+                    },
+                    "pages": {
+                        "N": "304"
+                    },
+                    "pencil": {
+                        "S": "Katsuhiro Otomo"
+                    },
+                    "published date": {
+                        "S": "Jun 22 2010"
+                    },
+                    "publisher": {
+                        "S": "Kodansha Comics"
+                    },
+                    "series": {
+                        "S": "Akira"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/thumbs/Akiravol2.jpg"
+                    },
+                    "title": {
+                        "S": "Akira Vol 2"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Katsuhiro Otomo"
+                    },
+                    "collection_id": {
+                        "S": "john_comics"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/Akiravol3.jpg"
+                    },
+                    "isbn": {
+                        "N": "1935429043"
+                    },
+                    "order": {
+                        "N": "3"
+                    },
+                    "pages": {
+                        "N": "296"
+                    },
+                    "pencil": {
+                        "S": "Katsuhiro Otomo"
+                    },
+                    "published date": {
+                        "S": "July 13 2010"
+                    },
+                    "publisher": {
+                        "S": "Kodansha Comics"
+                    },
+                    "series": {
+                        "S": "Akira"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/thumbs/Akiravol3.jpg"
+                    },
+                    "title": {
+                        "S": "Akira Vol 3"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Katsuhiro Otomo"
+                    },
+                    "collection_id": {
+                        "S": "john_comics"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/Akiravol4.jpg"
+                    },
+                    "isbn": {
+                        "S": "193542906X"
+                    },
+                    "order": {
+                        "N": "4"
+                    },
+                    "pages": {
+                        "N": "392"
+                    },
+                    "pencil": {
+                        "S": "Katsuhiro Otomo"
+                    },
+                    "published date": {
+                        "S": "November 30 2010"
+                    },
+                    "publisher": {
+                        "S": "Kodansha Comics"
+                    },
+                    "series": {
+                        "S": "Akira"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/thumbs/Akiravol4.jpg"
+                    },
+                    "title": {
+                        "S": "Akira Vol 4"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Katsuhiro Otomo"
+                    },
+                    "collection_id": {
+                        "S": "john_comics"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/Akiravol5.jpg"
+                    },
+                    "isbn": {
+                        "N": "1935429078"
+                    },
+                    "order": {
+                        "N": "5"
+                    },
+                    "pages": {
+                        "N": "416"
+                    },
+                    "pencil": {
+                        "S": "Katsuhiro Otomo"
+                    },
+                    "published date": {
+                        "S": "March 1 2011"
+                    },
+                    "publisher": {
+                        "S": "Kodansha Comics"
+                    },
+                    "series": {
+                        "S": "Akira"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/thumbs/Akiravol5.jpg"
+                    },
+                    "title": {
+                        "S": "Akira Vol 5"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Donny Cates"
+                    },
+                    "collection_id": {
+                        "S": "john_comics"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/Venomvol1.jpg"
+                    },
+                    "isbn": {
+                        "N": "1302913069"
+                    },
+                    "order": {
+                        "N": "6"
+                    },
+                    "pages": {
+                        "N": "136"
+                    },
+                    "pencil": {
+                        "S": "Ryan Stegman"
+                    },
+                    "published date": {
+                        "S": "December 4 2018"
+                    },
+                    "publisher": {
+                        "S": "Marvel"
+                    },
+                    "series": {
+                        "S": "Vemon(2018)"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/thumbs/Venomvol1.jpg"
+                    },
+                    "title": {
+                        "S": "Rex (Vol 1)"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Al Ewing"
+                    },
+                    "collection_id": {
+                        "S": "john_comics"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/Immortalhulkvol1.jpg"
+                    },
+                    "isbn": {
+                        "N": "1302912550"
+                    },
+                    "order": {
+                        "N": "7"
+                    },
+                    "pages": {
+                        "N": "128"
+                    },
+                    "pencil": {
+                        "S": "Joe Bennet"
+                    },
+                    "published date": {
+                        "S": "December 4 2018"
+                    },
+                    "publisher": {
+                        "S": "Marvel"
+                    },
+                    "series": {
+                        "S": "Immortal Hulk"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/thumbs/Immortalhulkvol1.jpg"
+                    },
+                    "title": {
+                        "S": "Or Is He Both? (Vol 1)"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Al Ewing"
+                    },
+                    "collection_id": {
+                        "S": "john_comics"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/Immortalhulkvol2.jpg"
+                    },
+                    "isbn": {
+                        "N": "1302912569"
+                    },
+                    "order": {
+                        "N": "8"
+                    },
+                    "pages": {
+                        "N": "112"
+                    },
+                    "pencil": {
+                        "S": "Joe Bennet"
+                    },
+                    "published date": {
+                        "S": "February 26 2019"
+                    },
+                    "publisher": {
+                        "S": "Marvel"
+                    },
+                    "series": {
+                        "S": "Immortal Hulk"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/thumbs/Immortalhulkvol2.jpg"
+                    },
+                    "title": {
+                        "S": "The Green Door (Vol 2)"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Al Ewing"
+                    },
+                    "collection_id": {
+                        "S": "john_comics"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/Immortalhulkvol3.jpg"
+                    },
+                    "isbn": {
+                        "N": "1302915061"
+                    },
+                    "order": {
+                        "N": "9"
+                    },
+                    "pages": {
+                        "N": "112"
+                    },
+                    "pencil": {
+                        "S": "Joe Bennet"
+                    },
+                    "published date": {
+                        "S": "May 28 2019"
+                    },
+                    "publisher": {
+                        "S": "Marvel"
+                    },
+                    "series": {
+                        "S": "Immortal Hulk"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/thumbs/Immortalhulkvol3.jpg"
+                    },
+                    "title": {
+                        "S": "Hulk In Hell (Vol 3)"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Al Ewing"
+                    },
+                    "collection_id": {
+                        "S": "john_comics"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/Immortalhulkvol4.jpg"
+                    },
+                    "isbn": {
+                        "S": "130291667X"
+                    },
+                    "order": {
+                        "N": "10"
+                    },
+                    "pages": {
+                        "N": "112"
+                    },
+                    "pencil": {
+                        "S": "Joe Bennet"
+                    },
+                    "published date": {
+                        "S": "September 17 2019"
+                    },
+                    "publisher": {
+                        "S": "Marvel"
+                    },
+                    "series": {
+                        "S": "Immortal Hulk"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/thumbs/Immortalhulkvol4.jpg"
+                    },
+                    "title": {
+                        "S": "Abomination (Vol 4)"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "author": {
+                        "S": "Al Ewing"
+                    },
+                    "collection_id": {
+                        "S": "john_comics"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/Immortalhulkvol5.jpg"
+                    },
+                    "isbn": {
+                        "N": "1302916688"
+                    },
+                    "order": {
+                        "N": "11"
+                    },
+                    "pages": {
+                        "N": "136"
+                    },
+                    "pencil": {
+                        "S": "Joe Bennet"
+                    },
+                    "published date": {
+                        "S": "December 3 2019"
+                    },
+                    "publisher": {
+                        "S": "Marvel"
+                    },
+                    "series": {
+                        "S": "Immortal Hulk"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/john/comics/thumbs/Immortalhulkvol5.jpg"
+                    },
+                    "title": {
+                        "S": "Breaker of Worlds (Vol 5)"
+                    },
+                    "type": {
+                        "S": "item"
+                    }
+                }
+            }
+        }
+    ]
+}

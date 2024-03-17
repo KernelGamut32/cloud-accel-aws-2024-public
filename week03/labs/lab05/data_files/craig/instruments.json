@@ -1,0 +1,364 @@
+{
+    "collectors": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "craig_guitars"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/01.jpg"
+                    },
+                    "name": {
+                        "S": "DIY Kit Jazz 5-String Fretless"
+                    },
+                    "order": {
+                        "N": "1"
+                    },
+                    "serial_number": {
+                        "N": "1"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/thumbs/01.jpg"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "year": {
+                        "N": "2018"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "craig_guitars"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/02.jpg"
+                    },
+                    "name": {
+                        "S": "DIY Kit Jazz 4-String"
+                    },
+                    "order": {
+                        "N": "2"
+                    },
+                    "serial_number": {
+                        "N": "2"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/thumbs/02.jpg"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "year": {
+                        "N": "2017"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "craig_guitars"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/03.jpg"
+                    },
+                    "name": {
+                        "S": "DIY Kit Telecaster (Basswood)"
+                    },
+                    "order": {
+                        "N": "3"
+                    },
+                    "serial_number": {
+                        "N": "3"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/thumbs/03.jpg"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "year": {
+                        "N": "2018"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "craig_guitars"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/04.jpg"
+                    },
+                    "name": {
+                        "S": "DIY Kit Telecaster (Mahogany)"
+                    },
+                    "order": {
+                        "N": "4"
+                    },
+                    "serial_number": {
+                        "N": "4"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/thumbs/04.jpg"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "year": {
+                        "N": "2018"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "craig_guitars"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/05.jpg"
+                    },
+                    "name": {
+                        "S": "SX VTG Precision (3/4 size)"
+                    },
+                    "order": {
+                        "N": "5"
+                    },
+                    "serial_number": {
+                        "N": "20700412"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/thumbs/05.jpg"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "year": {
+                        "N": "2017"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "craig_guitars"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/06.jpg"
+                    },
+                    "name": {
+                        "S": "Pedulla MVP4"
+                    },
+                    "order": {
+                        "N": "6"
+                    },
+                    "serial_number": {
+                        "N": "6294"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/thumbs/06.jpg"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "year": {
+                        "N": "1996"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "craig_guitars"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/07.jpg"
+                    },
+                    "name": {
+                        "S": "Fender Telecaster"
+                    },
+                    "order": {
+                        "N": "7"
+                    },
+                    "serial_number": {
+                        "S": "MN2106820"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/thumbs/07.jpg"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "year": {
+                        "N": "1992"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "craig_guitars"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/08.jpg"
+                    },
+                    "name": {
+                        "S": "Oscar Schmidt 0E-30/BK"
+                    },
+                    "order": {
+                        "N": "8"
+                    },
+                    "serial_number": {
+                        "S": "SI03060225"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/thumbs/08.jpg"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "year": {
+                        "S": "Unknown"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "craig_guitars"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/09.jpg"
+                    },
+                    "name": {
+                        "S": "Alvarez RD20C"
+                    },
+                    "order": {
+                        "N": "9"
+                    },
+                    "serial_number": {
+                        "S": "S99070466"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/thumbs/09.jpg"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "year": {
+                        "N": "1996"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "craig_guitars"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/10.jpg"
+                    },
+                    "name": {
+                        "S": "Ibanez AF-75"
+                    },
+                    "order": {
+                        "N": "10"
+                    },
+                    "serial_number": {
+                        "S": "S04050745"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/thumbs/10.jpg"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "year": {
+                        "N": "2004"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "craig_guitars"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/11.jpg"
+                    },
+                    "name": {
+                        "S": "Ibanez G10"
+                    },
+                    "order": {
+                        "N": "11"
+                    },
+                    "serial_number": {
+                        "N": "10"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/thumbs/11.jpg"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "year": {
+                        "N": "2019"
+                    }
+                }
+            }
+        },
+        {
+            "PutRequest": {
+                "Item": {
+                    "collection_id": {
+                        "S": "craig_guitars"
+                    },
+                    "image": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/12.jpg"
+                    },
+                    "name": {
+                        "S": "DIY Kit Blue 5-String"
+                    },
+                    "order": {
+                        "N": "12"
+                    },
+                    "serial_number": {
+                        "N": "8675309"
+                    },
+                    "thumb": {
+                        "S": "https://dynamodblabs.s3.amazonaws.com/collectors/images/craig/guitars/thumbs/12.jpg"
+                    },
+                    "type": {
+                        "S": "item"
+                    },
+                    "year": {
+                        "N": "2018"
+                    }
+                }
+            }
+        }
+    ]
+}
