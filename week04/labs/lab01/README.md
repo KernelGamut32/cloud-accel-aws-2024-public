@@ -27,6 +27,6 @@
     * Run `cdk bootstrap` again and confirm completes successfully
 * Run `cdk synth` to view the template that will be generated for the CDK stack
 * Run `cdk deploy` to deploy the CDK stack
-* On completion, from the terminal, execute `cd ..` and run the provided test harness using `./send_message.py -q Messages -i 0.1`; feel free to explore the contents of `send_message.py` to see the code
+* On completion, from the terminal, execute `cd ..` and run the provided test harness using `./send_message.py -q MessagesCDK -i 0.1`; feel free to explore the contents of `send_message.py` to see the code
 * Let the test harness run for a few seconds and then use `Ctrl+C` to stop its execution
 * Navigate to the DynamoDB table to view the messages that were posted to the SQS queue which triggered the Lambda to persist in the table

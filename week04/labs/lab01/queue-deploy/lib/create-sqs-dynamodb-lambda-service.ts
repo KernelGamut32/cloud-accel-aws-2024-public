@@ -11,7 +11,7 @@ export class CreateSqsDynamoDBLambdaService extends Construct {
 
     this.lambdaFunction = new lambda.Function(this, id, {
         functionName: "SQSDynamoDB",
-        runtime: lambda.Runtime.PYTHON_3_12,
+        runtime: lambda.Runtime.PYTHON_3_10,
         code: lambda.Code.fromAsset("resources/SQSDynamoDB"),
         handler: "lambda_function.lambda_handler",
         timeout: cdk.Duration.seconds(10),
