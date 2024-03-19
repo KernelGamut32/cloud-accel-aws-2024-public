@@ -1,6 +1,6 @@
 # Lab 01 - [Triggering Lambda from SQS](https://learn.acloud.guru/handson/c11ca4ba-f942-4a5b-9c75-ad3ff8134a97)
 
-Follow along with the "Guide" tab in the ACG lab definition. In this lab, you will use the environment created by the lab rather than Cloud9 since we need some pre-existing resources the lab environment provides. However, instead of deploying the lab resources manually, you will use CDK.
+**NOTE: Use an A Cloud Guru (ACG) AWS Playground for this lab**
 
 **If you encounter "no space left on device issues", use https://ryansouthgate.com/aws-cloud9-no-space-left-on-device/#:~:text=There%E2%80%99s%20a%20few%20things%20we%20can%20tackle%20here%2C,clean%20up%20that%20much%20free%20space%20for%20me**
 
@@ -16,7 +16,7 @@ Follow along with the "Guide" tab in the ACG lab definition. In this lab, you wi
     - Reboot your EC2 instance
     - Go back to Cloud9, click the radio button next to your Cloud9 environment, and click `Open in Cloud9`
     - In the terminal window, you can run `lsblk` to confirm new size
-* In the provided terminal, clone this repository using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
+* In the provided terminal from the `~/environment` folder, clone this repository using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
 * Navigate to the target folder using `cd cloud-accel-aws-2024-public/week04/labs/lab01/queue-deploy`; feel free to also explore the contents of the provided CDK files
 * Run `npm install` to install the required dependencies
 * Run `cdk bootstrap` in the terminal to bootstrap the CDK environment
@@ -27,10 +27,6 @@ Follow along with the "Guide" tab in the ACG lab definition. In this lab, you wi
     * Run `cdk bootstrap` again and confirm completes successfully
 * Run `cdk synth` to view the template that will be generated for the CDK stack
 * Run `cdk deploy` to deploy the CDK stack
-* On completion, connect to the running EC2 instance in the lab environment from a terminal using `ssh cloud_user@<public-IP-address>`; enter lab-provided shell password when prompted
-* Use `ls` to view files available in the EC2
-* View the contents of the `send_message.py` file using `cat send_message.py`
-* Run the test harness using `./send_message.py -q Messages -i 0.1`
+* On completion, from the terminal, execute `cd ..` and run the provided test harness using `./send_message.py -q Messages -i 0.1`; feel free to explore the contents of `send_message.py` to see the code
 * Let the test harness run for a few seconds and then use `Ctrl+C` to stop its execution
 * Navigate to the DynamoDB table to view the messages that were posted to the SQS queue which triggered the Lambda to persist in the table
-* You can exit or complete the lab
