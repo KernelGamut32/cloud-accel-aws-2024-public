@@ -54,7 +54,7 @@ new FirstCdkAppStack(app, 'green', {
 * After `green` deployment, note that both versions are available via different API Gateway endpoints
 * Execute the `/scan` endpoint to trigger the Lambda function against the `blue` URL
 * Execute the `/scan` endpoint to trigger the Lambda function against the `green` URL
-* Execute the `/add` endpoint to trigger the Lambda function against the `green` URL - use `curl -X PUT -d '{"id":"4567","name":"Another Test Item"}' curl <green API endpoint>/add` (using the output value from the `green` deployment)
+* Execute the `/add` endpoint to trigger the Lambda function against the `green` URL - use `curl -X PUT -d '{"id":"4567","name":"Another Test Item"}' <green API endpoint>/add` (using the output value from the `green` deployment)
 * Execute the `/scan` endpoint against the `green` URL again to confirm that new item got added to the DynamoDB table
 * If you execute `/scan` against the `blue` URL, you should see that the new item is not present as the `blue` deployment is still serving the original version of the Lambda function and DynamoDB table
 * Execute `cdk destroy blue` to tear down the `blue` instance; after completion, verify that the `green` version is still present and operational
