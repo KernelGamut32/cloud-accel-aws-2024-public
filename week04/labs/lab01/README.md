@@ -18,15 +18,16 @@
     - In the terminal window, you can run `lsblk` to confirm new size
 * In the provided terminal from the `~/environment` folder, clone this repository using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
 * Navigate to the target folder using `cd cloud-accel-aws-2024-public/week04/labs/lab01/queue-deploy`; feel free to also explore the contents of the provided CDK files
-* Run `npm install` to install the required dependencies
-* Run `cdk bootstrap` in the terminal to bootstrap the CDK environment
-* If you run into any issues running `cdk bootstrap`, execute the following steps:
+* With this CDK project, we are going to use `projen` to help us manage configuration and execution of our app (https://aws.amazon.com/blogs/devops/getting-started-with-projen-and-aws-cdk/)
+* Run `npx projen` to install the required dependencies
+* Run `npx cdk bootstrap` in the terminal to bootstrap the CDK environment
+* If you run into any issues running `npx cdk bootstrap`, execute the following steps:
     * Click the "Cloud9" logo in the upper left corner of the IDE and click "Preferences"
     * Click "AWS Settings" and uncheck "AWS managed temporary credentials"
     * In the Cloud9 terminal, run `aws configure` and set access key ID (from ACG credentials), secret access key (from ACG credentials), and default region (`us-east-1`)
-    * Run `cdk bootstrap` again and confirm completes successfully
-* Run `cdk synth` to view the template that will be generated for the CDK stack
-* Run `cdk deploy` to deploy the CDK stack
+    * Run `npx cdk bootstrap` again and confirm completes successfully
+* Run `npx projen build` to build the application, synthesize the CloudFormation template, and run the tests & linter for the project to validate
+* Run `npx projen deploy` to deploy the CDK stack
 * On completion, from the terminal, execute `cd ..`
 * Run `pip3 install -r requirements.txt` to install required dependencies
 * To run the provided test harness, use `python3 send_message.py -q MessagesCDK -i 0.1`; feel free to explore the contents of `send_message.py` to see the code
