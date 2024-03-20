@@ -19,7 +19,8 @@
 * In the provided terminal from the `~/environment` folder, clone this repository using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
 * Navigate to the target folder using `cd cloud-accel-aws-2024-public/week04/labs/lab01/queue-deploy`; feel free to also explore the contents of the provided CDK files
 * With this CDK project, we are going to use `projen` to help us manage configuration and execution of our app (https://aws.amazon.com/blogs/devops/getting-started-with-projen-and-aws-cdk/)
-* Run `npx projen` to install the required dependencies
+* Run `npm install` to install the required dependencies
+* Run `npx projen` to incorporate and confirm any configuration updates
 * Run `npx cdk bootstrap` in the terminal to bootstrap the CDK environment
 * If you run into any issues running `npx cdk bootstrap`, execute the following steps:
     * Click the "Cloud9" logo in the upper left corner of the IDE and click "Preferences"
