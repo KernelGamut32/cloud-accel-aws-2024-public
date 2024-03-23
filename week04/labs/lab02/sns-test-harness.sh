@@ -2,20 +2,20 @@
 
 # Publish regular EU order message
 aws sns publish \
-    --message '{"location": "eu-west", "quantity": 34}' \
+    --message '{"location": "eu zone 1", "country": "Germany", "quantity": 34}' \
     --topic-arn $1
 
 # Publish large EU order message
 aws sns publish \
-    --message '{"location": "eu-north", "quantity": 111}' \
+    --message '{"location": "eu zone 2", "country": "Spain", "quantity": 111}' \
     --topic-arn $1
 
 # Publish large other order message
 aws sns publish \
-    --message '{"location": "us-west", "quantity": 222, "state": "OH"}' \
+    --message '{"location": "us-west", "state": "OH", "quantity": 222}' \
     --topic-arn $1
 
 # Publish regular other order message
 aws sns publish \
-    --message '{"location": "us-east", "quantity": 33, "state": "NY"}' \
+    --message '{"location": "us-east", "state": "NY", "quantity": 33}' \
     --topic-arn $1
