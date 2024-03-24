@@ -1,0 +1,18 @@
+[
+    {
+        "ParameterKey": "SNSTopicName",
+        "ParameterValue": "high_temp_notice"
+    },
+    {
+        "ParameterKey": "SNSSubscriptionEndpoint",
+        "ParameterValue": "<email address>"
+    },
+    {
+        "ParameterKey": "SNSSubscriptionProtocol",
+        "ParameterValue": "email"
+    },
+    {
+        "ParameterKey": "AlarmTopicRuleSQL",
+        "ParameterValue": "SELECT topic(2) as device_id, temperature as reported_temperature, 30 as max_temperature FROM 'device/+/data' WHERE temperature > 30"
+    }
+]

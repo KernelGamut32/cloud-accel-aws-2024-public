@@ -1,0 +1,79 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Parameters:
+    SNSTopicName:
+        Type: String
+        Description: "SNS topic to which alarms will be sent"
+    SNSSubscriptionEndpoint:
+        Type: String
+        Description: "Endpoint to which notifications will be sent"
+    SNSSubscriptionProtocol:
+        Type: String
+        Description: "Protocol to use for notifications"
+    AlarmTopicRuleSQL:
+        Type: String
+        Description: "SQL to use for alarm topic rule"
+
+Resources:
+    AlarmTopicRuleRole:
+        Type: AWS::IAM::Role
+        Properties:
+            AssumeRolePolicyDocument:
+                Version: "2012-10-17"
+                Statement:
+                - Sid: AllowAssumeRole
+                  Effect: Allow
+                  Principal:
+                    Service:
+                    - iot.amazonaws.com
+                  Action:
+                  - sts:AssumeRole
+
+    AlarmTopicManagedPolicy:
+        Type: AWS::IAM::ManagedPolicy
+        Properties:
+            Description: "Managed policy for alarm topic"
+            PolicyDocument:
+                Version: "2012-10-17"
+                Statement:
+                - Sid: AllowPublish
+                  Effect: Allow
+                  Action:
+                  - sns:Publish
+                  Resource: !Ref SNSTopic
+            Roles:
+            - !Ref AlarmTopicRuleRole
+
+    SNSTopic:
+        Type: "AWS::SNS::Topic"
+        Properties:
+            DisplayName: ""
+            TopicName: !Ref SNSTopicName
+
+    SNSSubscription:
+        Type: "AWS::SNS::Subscription"
+        Properties:
+            TopicArn: !Ref SNSTopic
+            Endpoint: !Ref SNSSubscriptionEndpoint
+            Protocol: !Ref SNSSubscriptionProtocol
+            Region: !Ref AWS::Region
+
+    SNSTopicPolicy:
+        Type: "AWS::SNS::TopicPolicy"
+        Properties:
+            PolicyDocument: !Sub "{\"Version\":\"2008-10-17\",\"Id\":\"__default_policy_ID\",\"Statement\":[{\"Sid\":\"__default_statement_ID\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"*\"},\"Action\":[\"SNS:GetTopicAttributes\",\"SNS:SetTopicAttributes\",\"SNS:AddPermission\",\"SNS:RemovePermission\",\"SNS:DeleteTopic\",\"SNS:Subscribe\",\"SNS:ListSubscriptionsByTopic\",\"SNS:Publish\"],\"Resource\":\"${SNSTopic}\",\"Condition\":{\"StringEquals\":{\"AWS:SourceOwner\":\"${AWS::AccountId}\"}}}]}"
+            Topics: 
+              - !Ref SNSTopic
+
+    AlarmTopicRule:
+        Type: "AWS::IoT::TopicRule"
+        Properties:
+            RuleName: "AlarmTopicRule"
+            TopicRulePayload: 
+                RuleDisabled: false
+                Sql: !Ref AlarmTopicRuleSQL
+                Actions: 
+                    - Sns: 
+                        TargetArn: !Ref SNSTopic
+                        RoleArn: !GetAtt AlarmTopicRuleRole.Arn
+                        MessageFormat: "RAW"

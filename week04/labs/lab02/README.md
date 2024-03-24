@@ -1,4 +1,4 @@
-# Lab 02 - [Lambda, SQS, and SNS]
+# Lab 02 - Lambda, SQS, and SNS
 
 **NOTE: Use an A Cloud Guru (ACG) AWS Playground for this lab**
 
@@ -34,3 +34,4 @@
 * Navigate to the location of the test harness using `cd cloud-accel-aws-2024-public/week04/labs/lab02`
 * To run the provided test harness, use `./sns-test-harness.sh <SNS Topic ARN>`
 * Navigate to DynamoDB to confirm the messages were each routed to the correct table with the expected data; the fourth message in the test harness should not trigger a table write
+* Run `npx cdk destroy` from the project folder to delete the AWS resources for the lab
