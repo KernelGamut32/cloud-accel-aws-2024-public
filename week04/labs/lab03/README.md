@@ -17,7 +17,6 @@
     - Go back to Cloud9, click the radio button next to your Cloud9 environment, and click `Open in Cloud9`
     - In the terminal window, you can run `lsblk` to confirm new size
 * In the provided terminal from the `~/environment` folder, clone the class repository using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
-* Navigate to the target folder using `cd cloud-accel-aws-2024-public/week04/labs/lab03`
 * Review the `notification.yaml` file and the `inputs.json` file
 * Open `inputs.json` in the IDE and replace `<email address>` with a valid email address
 * Create the AWS resources using the CloudFormation template in the lab repository by running `aws cloudformation create-stack --stack-name IOT-SNS --parameters file://./cloud-accel-aws-2024-public/week04/labs/lab03/inputs.json  --template-body file://./cloud-accel-aws-2024-public/week04/labs/lab03/notification.yaml --capabilities CAPABILITY_IAM`
