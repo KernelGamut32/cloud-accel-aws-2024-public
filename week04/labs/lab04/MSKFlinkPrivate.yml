@@ -25,19 +25,12 @@ Mappings:
       PrivateSubnetMSKThree:
         CIDR: '10.0.3.0/24'
   RegionAMI:
-      # us-east-1:
-      #   HVM64: ami-00dc79254d0461090
-      # us-west-2:
-      #   HVM64: ami-0a85857bfc5345c38
-      # eu-west-1:
-      #   HVM64: ami-040ba9174949f6de4
       us-east-1:
-        #AMI with kafka, kafkacat, JDK, CLI pre-installed
-        HVM64: ami-0dcd7e197722e6874
-      # us-west-2:
-      #   HVM64: ami-0cb72367e98845d43
-      # eu-west-1:
-      #   HVM64: ami-0aaef8347b162f148
+        HVM64: ami-00dc79254d0461090
+      us-west-2:
+        HVM64: ami-0a85857bfc5345c38
+      eu-west-1:
+        HVM64: ami-040ba9174949f6de4
 Resources:
   VPC:
     Type: AWS::EC2::VPC
