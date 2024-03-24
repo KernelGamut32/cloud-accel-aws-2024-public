@@ -256,7 +256,7 @@ Resources:
           !Sub |
           #!/bin/bash
           yum update -y
-          yum install python3.7 -y
+          yum install python3.12 -y
           yum install java-1.8.0-openjdk-devel -y
           yum install nmap-ncat -y
           yum install git -y
@@ -268,7 +268,7 @@ Resources:
 
           cd /home/ec2-user
           wget https://bootstrap.pypa.io/get-pip.py
-          su -c "python3.7 get-pip.py --user" -s /bin/sh ec2-user
+          su -c "python3.12 get-pip.py --user" -s /bin/sh ec2-user
           su -c "/home/ec2-user/.local/bin/pip3 install boto3 --user" -s /bin/sh ec2-user
           su -c "/home/ec2-user/.local/bin/pip3 install awscli --user" -s /bin/sh ec2-user
 
@@ -279,18 +279,6 @@ Resources:
           su -c "ln -s /usr/local/bin/aws2/aws ~/.local/bin/aws2" -s /bin/sh ec2-user
 
           su -c "mkdir -p /tmp/kafka" -s /bin/sh ec2-user
-
-          # get Confluent community
-          cd /home/ec2-user
-          su -c "mkdir -p confluent kafka" -s /bin/sh ec2-user
-          cd confluent
-          su -c "wget http://packages.confluent.io/archive/5.3/confluent-community-5.3.1-2.12.tar.gz" -s /bin/sh ec2-user
-          su -c "tar -xzf confluent-community-5.3.1-2.12.tar.gz --strip 1" -s /bin/sh ec2-user
-
-          cd /home/ec2-user
-          cd kafka
-          su -c "wget https://archive.apache.org/dist/kafka/2.3.1/kafka_2.12-2.3.1.tgz" -s /bin/sh ec2-user
-          su -c "tar -xzf kafka_2.12-2.3.1.tgz --strip 1" -s /bin/sh ec2-user
 
           echo -n "
           [Unit]
