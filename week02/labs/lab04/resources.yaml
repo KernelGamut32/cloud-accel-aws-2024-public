@@ -65,7 +65,7 @@ Resources:
                       "latency.$":"$.latencyMs",
                       "team_alias":"${EngineeringApprovalTeamAlias}",
                       "token.$":"$$.Task.Token",
-                      "sender":"no-reply@example.com"
+                      "sender":"${ResearchApprovalTeamAlias}"
                     }
                  },
                  "Catch": [ {
@@ -83,7 +83,7 @@ Resources:
                        "accuracy.$":"$.accuracypct",
                        "team_alias":"${ResearchApprovalTeamAlias}",
                        "token.$":"$$.Task.Token",
-                       "sender":"no-reply@example.com"
+                       "sender":"${EngineeringApprovalTeamAlias}"
                     }
                  },
                  "Catch": [ {
