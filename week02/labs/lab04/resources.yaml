@@ -363,7 +363,7 @@ Resources:
               Configuration:
                 BranchName: "main"
                 OutputArtifactFormat: "CODE_ZIP"
-                PollForSourceChanges: "false"
+                PollForSourceChanges: "true"
                 RepositoryName: !GetAtt CodeCommitRepository.Name
               OutputArtifacts:
                 - Name: "SourceArtifact"
