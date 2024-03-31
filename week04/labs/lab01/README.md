@@ -36,4 +36,4 @@
 * Let the test harness run for a few seconds and then use `Ctrl+C` to stop its execution
 * Navigate to the DynamoDB table to view the messages that were posted to the SQS queue which triggered the Lambda to persist in the table
 * Navigate to SQS and review `Monitoring` to see activity processed through the queue
-* Run `npx cdk destroy` from the project folder to delete the AWS resources for the lab
+* Run `npx projen destroy` from the project folder to delete the AWS resources for the lab
