@@ -8,7 +8,7 @@ Nested Stacks can use outputs from other stacks within the same group. Exporting
 
 * In the lab environment, create a new Cloud9 environment by navigating to the Cloud9 console and clicking `Create environment` (or reuse a previously-created environment)
     - Specify a name for the environment
-    - Select `t3.small` for instance type
+    - Select `Additional instance types` and choose `t3.medium`
     - Leave all other options at their defaults, and click `Create`
     - Wait for the Cloud9 environment creation to complete and click the link for your newly created environment
     - Under `EC2 instance` click `Manage EC2 instance`
