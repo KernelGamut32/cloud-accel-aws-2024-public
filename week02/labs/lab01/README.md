@@ -8,7 +8,7 @@ Review/highlight https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingEncr
 
 As part of this lab, we will also review Former2 (https://former2.com/).
 
-* In the lab environment, create a new Cloud9 environment by navigating to the Cloud9 console and clicking `Create environment` (or reuse a previously-created environment)
+1. In the lab environment, create a new Cloud9 environment by navigating to the Cloud9 console and clicking `Create environment` (or reuse a previously-created environment)
     - Specify a name for the environment
     - Select `Additional instance types` and choose `t3.medium`
     - Leave all other options at their defaults, and click `Create`
@@ -20,17 +20,17 @@ As part of this lab, we will also review Former2 (https://former2.com/).
     - Reboot your EC2 instance
     - Go back to Cloud9, click the radio button next to your Cloud9 environment, and click `Open in Cloud9`
     - In the terminal window, you can run `lsblk` to confirm new size
-* In the provided terminal, clone this repository using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
-* In the project view on the left, navigate to the week 02/lab 01 folder and open `secured-bucket.yaml` to review the template definition
-* Push the CloudFormation template to AWS using `aws cloudformation create-stack --stack-name secured-s3 --template-body file://./cloud-accel-aws-2024-public/week02/labs/lab01/secured-bucket.yaml`
-* Run `aws cloudformation describe-stack-events --stack-name secured-s3` to view the status of the stack creation
-* Navigate to `S3` and review the new bucket's configuration
-* Navigate to `KMS` and explore (in a new tab)
+1. In the provided terminal, clone this repository using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
+1. In the project view on the left, navigate to the week 02/lab 01 folder and open `secured-bucket.yaml` to review the template definition
+1. Push the CloudFormation template to AWS using `aws cloudformation create-stack --stack-name secured-s3 --template-body file://./cloud-accel-aws-2024-public/week02/labs/lab01/secured-bucket.yaml`
+1. Run `aws cloudformation describe-stack-events --stack-name secured-s3` to view the status of the stack creation
+1. Navigate to `S3` and review the new bucket's configuration
+1. Navigate to `KMS` and explore (in a new tab)
     - Look for `aws/s3` in `AWS managed keys` (see https://repost.aws/knowledge-center/s3-encrypt-specific-folder and https://docs.aws.amazon.com/AmazonS3/latest/userguide/configuring-bucket-key.html for more information on `aws/s3` default key)
     - Review `Key policy` and `Cryptographic configuration`
     - Add file to S3 bucket using bucket policy
     - Navigate to the object and review `Server-side encryption settings` (review encryption key ARN); verify that this ARN matches to the `aws/s3` key
-* In the project view on the left, navigate to the week 02/lab 01 folder and open `secured-bucket-with-kms.yaml` to review the template definition
-* Push the CloudFormation template to AWS using `aws cloudformation update-stack --stack-name secured-s3 --template-body file://./cloud-accel-aws-2024-public/week02/labs/lab01/secured-bucket-with-kms.yaml --parameters ParameterKey=CloudUser,ParameterValue="cloud_user" ParameterKey=KeyAlias,ParameterValue="alias/super-duper-secret-key"`
-* Run `aws cloudformation describe-stack-events --stack-name secured-s3` to view the status of the stack creation
-* Add a second file to the bucket and verify that the first object is still using the AWS Managed Key and that the second object is using your Customer Managed Key
+1. In the project view on the left, navigate to the week 02/lab 01 folder and open `secured-bucket-with-kms.yaml` to review the template definition
+1. Push the CloudFormation template to AWS using `aws cloudformation update-stack --stack-name secured-s3 --template-body file://./cloud-accel-aws-2024-public/week02/labs/lab01/secured-bucket-with-kms.yaml --parameters ParameterKey=CloudUser,ParameterValue="cloud_user" ParameterKey=KeyAlias,ParameterValue="alias/super-duper-secret-key"`
+1. Run `aws cloudformation describe-stack-events --stack-name secured-s3` to view the status of the stack creation
+1. Add a second file to the bucket and verify that the first object is still using the AWS Managed Key and that the second object is using your Customer Managed Key

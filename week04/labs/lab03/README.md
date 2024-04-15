@@ -4,7 +4,7 @@
 
 **If you encounter "no space left on device issues", use https://ryansouthgate.com/aws-cloud9-no-space-left-on-device/#:~:text=There%E2%80%99s%20a%20few%20things%20we%20can%20tackle%20here%2C,clean%20up%20that%20much%20free%20space%20for%20me**
 
-* In the lab environment, create a new Cloud9 environment by navigating to the Cloud9 console and clicking `Create environment` (or reuse a previously-created environment)
+1. In the lab environment, create a new Cloud9 environment by navigating to the Cloud9 console and clicking `Create environment` (or reuse a previously-created environment)
     - Specify a name for the environment
     - Select `Additional instance types` and choose `t3.medium`
     - Leave all other options at their defaults, and click `Create`
@@ -16,11 +16,11 @@
     - Reboot your EC2 instance
     - Go back to Cloud9, click the radio button next to your Cloud9 environment, and click `Open in Cloud9`
     - In the terminal window, you can run `lsblk` to confirm new size
-* In the provided terminal from the `~/environment` folder, clone the class repository using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
-* Review the `notification.yaml` file and the `inputs.json` file
-* Open `inputs.json` in the IDE and replace `<email address>` with a valid email address
-* Create the AWS resources using the CloudFormation template in the lab repository by running `aws cloudformation create-stack --stack-name IOT-SNS --parameters file://./cloud-accel-aws-2024-public/week04/labs/lab03/inputs.json  --template-body file://./cloud-accel-aws-2024-public/week04/labs/lab03/notification.yaml --capabilities CAPABILITY_IAM`
-* Run `aws cloudformation describe-stack-events --stack-name IOT-SNS` to check the status of the stack creation (or view in the CloudFormation Management Console)
-* You will need to confirm the subscription at the email address used for the parameter before sending test data
-* Once the CloudFormation deployment completes, use the AWS Console and follow along with `Step 3: Test the AWS IoT rule and Amazon SNS notification` to test the rule and notification
-* Use `aws cloudformation delete-stack --stack-name IOT-SNS` to delete the AWS resources for the lab
+1. In the provided terminal from the `~/environment` folder, clone the class repository using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
+1. Review the `notification.yaml` file and the `inputs.json` file
+1. Open `inputs.json` in the IDE and replace `<email address>` with a valid email address
+1. Create the AWS resources using the CloudFormation template in the lab repository by running `aws cloudformation create-stack --stack-name IOT-SNS --parameters file://./cloud-accel-aws-2024-public/week04/labs/lab03/inputs.json  --template-body file://./cloud-accel-aws-2024-public/week04/labs/lab03/notification.yaml --capabilities CAPABILITY_IAM`
+1. Run `aws cloudformation describe-stack-events --stack-name IOT-SNS` to check the status of the stack creation (or view in the CloudFormation Management Console)
+1. You will need to confirm the subscription at the email address used for the parameter before sending test data
+1. Once the CloudFormation deployment completes, use the AWS Console and follow along with `Step 3: Test the AWS IoT rule and Amazon SNS notification` to test the rule and notification
+1. Use `aws cloudformation delete-stack --stack-name IOT-SNS` to delete the AWS resources for the lab
