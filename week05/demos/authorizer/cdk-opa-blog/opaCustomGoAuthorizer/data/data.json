@@ -1,0 +1,16 @@
+{
+    "GroupPermissions": {
+        "record1": [
+            "ViewerGroup",
+            "AdminGroup",
+            "Guest"
+        ],
+        "record2": [
+            "ViewerGroup",
+            "AdminGroup"
+        ],
+        "record_secret": [
+            "AdminGroup"
+        ]
+    }
+}

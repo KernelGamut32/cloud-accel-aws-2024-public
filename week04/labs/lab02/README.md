@@ -23,7 +23,7 @@
 1. Run `npx projen` to incorporate and confirm any configuration updates
 1. Run `npx cdk bootstrap` in the terminal to bootstrap the CDK environment
 1. If you run into any issues running `npx cdk bootstrap`, execute the following steps:
-    - fsdf Click the "Cloud9" logo in the upper left corner of the IDE and click "Preferences"
+    - Click the "Cloud9" logo in the upper left corner of the IDE and click "Preferences"
     - Click "AWS Settings" and uncheck "AWS managed temporary credentials"
     - In the Cloud9 terminal, run `aws configure` and set access key ID (from ACG credentials), secret access key (from ACG credentials), and default region (`us-east-1`)
     - Run `npx cdk bootstrap` again and confirm completes successfully
