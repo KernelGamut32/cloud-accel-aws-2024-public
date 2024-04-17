@@ -1,6 +1,6 @@
 module cdk-opa-blog
 
-go 1.20.12
+go 1.20
 
 require (
 	github.com/aws/aws-lambda-go v1.46.0
