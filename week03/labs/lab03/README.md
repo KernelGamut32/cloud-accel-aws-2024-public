@@ -17,11 +17,27 @@
     - Go back to Cloud9, click the radio button next to your Cloud9 environment, and click `Open in Cloud9`
     - In the terminal window, you can run `lsblk` to confirm new size
 1. In the provided terminal, clone this repository using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
+1. Install Maven in Cloud9 using `sudo yum install maven -y`; upon completion, verify using `mvn --version`
 1. Make sure that you are in the `~/environment` folder in the terminal and follow along with the instructions in the AWS tutorial using Java as the language
-1. Install Maven in Cloud9 using `sudo yum install maven`; upon completion, verify using `mvn --version`
-1. For the "Create a Lambda function to list all widgets" step, use the contents of the provided `cloud-accel-aws-2024-public/week03/labs/lab03/step01.widgets.js` for the `widgets.js` file at this step
-1. For the "Create a widget service" step, use the contents of the provided `cloud-accel-aws-2024-public/week03/labs/lab03/step02.WidgetService.java` for the `WidgetService.java` file at this step
-1. When testing the initial GET operation of the API use the API Gateway service in the AWS Management Console
-1. For the "Add the individual widget functions" step, use the contents of the provided `cloud-accel-aws-2024-public/week03/labs/lab03/step03.widgets.js` for the `widgets.js` file at this step
-1. Use the contents of the provided `cloud-accel-aws-2024-public/week03/labs/lab03/step04.WidgetService.java` for the `WidgetService.java` file at this step
-1. As before, use the API Gateway service to run the tests - make sure that the `Test` interface in API Gateway shows the `id` value for input (you can do this by clicking `Method response` and then clicking back to `Test`)
+1. For the requested updates to `CdkHelloWorldApp.java`, use this code (instead of what's referenced in the tutorial); **make sure you save your changes**:
+
+```
+package com.myorg;
+
+import software.amazon.awscdk.App;
+import software.amazon.awscdk.Environment;
+import software.amazon.awscdk.StackProps;
+
+import java.util.Arrays;
+
+public class CdkHelloWorldApp {
+    public static void main(final String[] args) {
+        App app = new App();
+
+        new CdkHelloWorldStack(app, "CdkHelloWorldStack", StackProps.builder()
+                .build());
+
+        app.synth();
+    }
+}
+```

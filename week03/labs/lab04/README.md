@@ -29,15 +29,15 @@ aws lambda create-function \
 7. Wait until the Lambda update operation for adding VPC and subnets is complete before updating the Lambda code to reference the RDS instance
 8. After completion of regular lab, from the same SSH session:
     <ol type="a">
-    <li>Execute `nano ~/exercise_files/Section5-BackendLayer/pymysql_lambda.py` in the terminal</li>
-    <li>Copy the contents of the provided `cloud-accel-aws-2024-public/week03/labs/lab04/pymysql_lambda_update.py` into the file, replacing what is currently there; **don't forget to reset the RDS endpoint, username, and password**</li>
-    <li>From the `~/exercise_files/Section5-BackendLayer` folder, create a new zip file using `zip new_function_code.zip pymysql_lambda.py`</li>
-    <li>Execute `aws lambda update-function-code --function-name pymysql-function --zip-file fileb:///home/cloud_user/exercise_files/Section5-BackendLayer/new_function_code.zip`</li>
-    <li>Run `sudo yum install -y mysql` and provide the shell password for `cloud_user`</li>
+    <li>Execute nano ~/exercise_files/Section5-BackendLayer/pymysql_lambda.py in the terminal</li>
+    <li>Copy the contents of the provided cloud-accel-aws-2024-public/week03/labs/lab04/pymysql_lambda_update.py into the file, replacing what is currently there; don't forget to reset the RDS endpoint, username, and password</li>
+    <li>From the ~/exercise_files/Section5-BackendLayer folder, create a new zip file using zip new_function_code.zip pymysql_lambda.py</li>
+    <li>Execute aws lambda update-function-code --function-name pymysql-function --zip-file fileb:///home/cloud_user/exercise_files/Section5-BackendLayer/new_function_code.zip</li>
+    <li>Run sudo yum install -y mysql and provide the shell password for cloud_user</li>
     <li>Navigate to the EC2 dashboard and find the private IP address of the instance where you've been running your terminal session from; copy that IP address</li>
     <li>Navigate to the security group associated to the Aurora database and add the private IP address for access to port 3306 (under "Inbound rules")</li>
-    <li>Connect to MySQL from the terminal session using `mysql -u admin -h <db URL for writer instance> -p`; when prompted, enter the password you used when creating the database</li>
-    <li>Once connected, execute `CREATE DATABASE widgets;` and then `USE widgets;`</li>
+    <li>Connect to MySQL from the terminal session using mysql -u admin -h [URL for writer instance] -p; when prompted, enter the password you used when creating the database</li>
+    <li>Once connected, execute CREATE DATABASE widgets; and then USE widgets;</li>
     <li>Execute</li>
     
     ```
@@ -67,7 +67,7 @@ aws lambda create-function \
     );
     ```
 
-    <li>Execute `SELECT * FROM Catalog;` to confirm presence of new records</li>
-    <li>Run `exit` to exit the MySQL session</li>
-    <li>Try executing the updated function using `aws lambda invoke --function-name pymysql-function --payload '{}' /dev/stdout` to see the records returned from the newly created database and table</li>
+    <li>Execute SELECT * FROM Catalog; to confirm presence of new records</li>
+    <li>Run exit to exit the MySQL session</li>
+    <li>Try executing the updated function using aws lambda invoke --function-name pymysql-function --payload '{}' /dev/stdout to see the records returned from the newly created database and table</li>
     </ol>
