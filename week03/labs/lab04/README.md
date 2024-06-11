@@ -2,6 +2,8 @@
 
 Follow along with the "Guide" tab in the ACG lab definition. In this lab, you will use the environment created by the lab rather than Cloud9 since we need some pre-existing resources the lab environment provides.
 
+![Week03/ Lab04](../images/week03-lab04.png)
+
 1. For the "Create a Lambda Function" step, use the following instead for Lambda creation (Python 3.7 no longer valid)
 
 ```
