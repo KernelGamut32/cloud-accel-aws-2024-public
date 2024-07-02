@@ -56,7 +56,7 @@ production:
 ```
 
 16. Integrate and verify the build
-    - For the project in GitLab, under "Settings" | "CI/CD" | "Variables", set the "AWS_ACCESS_KEY_ID" and "AWS_SECRET_ACCESS_KEY" variables to the values for the `cloud_user` account (or whatever AWS account you are using)
+    - For the project in GitLab, under "Settings" | "CI/CD" | "Variables", set the "AWS_ACCESS_KEY_ID" and "AWS_SECRET_ACCESS_KEY" variables to the values for the `cloud_user` account (or whatever AWS account you are using); **NOTE: Make sure that the "Protect variable" flag is unchecked when creating the variables in GitLab**
     - Push the updated `.gitlab-ci.yml` file to the repository and observe build progress
     - Confirm successful build and test the deployed application through the API gateway URL (it should show as an output from the pipeline run)
 
