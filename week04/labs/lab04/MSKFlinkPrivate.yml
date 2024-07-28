@@ -366,7 +366,7 @@ Resources:
           ClientBroker: PLAINTEXT
           InCluster: false
       EnhancedMonitoring: DEFAULT
-      KafkaVersion: 2.3.1
+      KafkaVersion: 3.2.0
       NumberOfBrokerNodes: 3
 
   ElasticsearchService:
