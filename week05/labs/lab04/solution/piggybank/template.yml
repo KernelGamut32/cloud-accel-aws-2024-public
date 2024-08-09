@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  PiggyBank AWS SAM application
+
+Resources:
+  Piggybank:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest
+      Runtime: java17
+      CodeUri: target/function.zip
+      MemorySize: 1024
+      SnapStart:
+        ApplyOn: PublishedVersions
+      AutoPublishAlias: snap
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: finance
+      Timeout: 15
+      Environment:
+        Variables:
+          JAVA_TOOL_OPTIONS: "-XX:+TieredCompilation -XX:TieredStopAtLevel=1"
+      Events:
+        HttpApiEvent:
+          Type: HttpApi
+Outputs:
+  PiggybankApi:
+    Description: URL for application
+    Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/'
+    Export:
+      Name: PiggybankApi
