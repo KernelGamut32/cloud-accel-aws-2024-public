@@ -6,18 +6,15 @@
 
 **See: https://docs.gitlab.com/ee/ci/yaml/gitlab_ci_yaml.html and https://docs.gitlab.com/ee/ci/yaml/index.html for additional information on the syntax used in the `.gitlab-ci.yml` file**
 
-1. In the lab environment, create a new Cloud9 environment by navigating to the Cloud9 console and clicking `Create environment` (or reuse a previously-created environment)
-    - Specify a name for the environment
-    - Select `Additional instance types` and choose `t3.medium`
-    - Leave all other options at their defaults, and click `Create`
-    - Wait for the Cloud9 environment creation to complete and click the link for your newly created environment
-    - Under `EC2 instance` click `Manage EC2 instance`
-    - Click the `Instance ID` link
-    - Select `Storage`, click the `Volume ID` link, click the checkbox next to your volume, and select `Modify volume` from the `Actions` dropdown
-    - Increase size from `10` to `30` GiB; click `Modify` and click `Modify` in the confirmation dialog
-    - Reboot your EC2 instance
-    - Go back to Cloud9, click the radio button next to your Cloud9 environment, and click `Open in Cloud9`
-    - In the terminal window, you can run `lsblk` to confirm new size
+1. In the lab environment, create a new Cloud9 environment using the following steps:
+    - Open `CloudShell` (in the upper right)
+    - Clone this repository to `CloudShell` using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
+    - Navigate to the root folder using `cd cloud-accel-aws-2024-public`
+    - Execute the bash script to create a new Cloud9 environment using `./cloud9.sh '<env-name>' 't3.medium' 'amazonlinux-2023-x86_64'` (replace `<env-name>` with your environment name)
+    - Close `CloudShell`
+    - In the search bar, search for `Cloud9` (open in a new tab)
+    - Click the radio button next to your environment and click `Open in Cloud9`
+    - Execute the remaining instructions in the Cloud9 environment
 1. Create a new project in GitLab (I used public) but **do not initialize with a README** (I used `gitlabci-lab` for project name)
 1. Execute the following: `sam init -r python3.8 -n <repository name> --app-template "hello-world"` from the `~/environment` path in the terminal (use value from previous step for `<repository name>`)
 1. This will create a new folder containing a simple SAM (Serverless Application Model) Lambda

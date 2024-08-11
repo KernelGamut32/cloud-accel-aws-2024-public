@@ -4,18 +4,15 @@
 
 **If you encounter "no space left on device issues", use https://ryansouthgate.com/aws-cloud9-no-space-left-on-device/#:~:text=There%E2%80%99s%20a%20few%20things%20we%20can%20tackle%20here%2C,clean%20up%20that%20much%20free%20space%20for%20me**
 
-1. In the lab environment, create a new Cloud9 environment by navigating to the Cloud9 console and clicking `Create environment` (or reuse a previously-created environment)
-    - Specify a name for the environment
-    - Select `Additional instance types` and choose `t3.medium`
-    - Leave all other options at their defaults, and click `Create`
-    - Wait for the Cloud9 environment creation to complete and click the link for your newly created environment
-    - Under `EC2 instance` click `Manage EC2 instance`
-    - Click the `Instance ID` link
-    - Select `Storage`, click the `Volume ID` link, click the checkbox next to your volume, and select `Modify volume` from the `Actions` dropdown
-    - Increase size from `10` to `30` GiB; click `Modify` and click `Modify` in the confirmation dialog
-    - Reboot your EC2 instance
-    - Go back to Cloud9, click the radio button next to your Cloud9 environment, and click `Open in Cloud9`
-    - In the terminal window, you can run `lsblk` to confirm new size
+1. In the lab environment, create a new Cloud9 environment using the following steps:
+    - Open `CloudShell` (in the upper right)
+    - Clone this repository to `CloudShell` using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
+    - Navigate to the root folder using `cd cloud-accel-aws-2024-public`
+    - Execute the bash script to create a new Cloud9 environment using `./cloud9.sh '<env-name>' 't3.medium' 'amazonlinux-2023-x86_64'` (replace `<env-name>` with your environment name)
+    - Close `CloudShell`
+    - In the search bar, search for `Cloud9` (open in a new tab)
+    - Click the radio button next to your environment and click `Open in Cloud9`
+    - Execute the remaining instructions in the Cloud9 environment
 1. In the provided terminal, clone this repository using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
 1. Install Maven in Cloud9 using `sudo yum install maven -y`; upon completion, verify using `mvn --version`
 1. Make sure that you are in the `~/environment` folder in the terminal and follow along with the instructions in the AWS tutorial using Java as the language
