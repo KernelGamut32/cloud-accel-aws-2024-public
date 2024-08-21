@@ -10,7 +10,7 @@
     - Open `CloudShell` (in the upper right)
     - Clone this repository to `CloudShell` using `git clone https://github.com/KernelGamut32/cloud-accel-aws-2024-public.git`
     - Navigate to the root folder using `cd cloud-accel-aws-2024-public`
-    - Execute the bash script to create a new Cloud9 environment using `./cloud9.sh '<env-name>' 't3.medium' 'amazonlinux-2023-x86_64'` (replace `<env-name>` with your environment name)
+    - Execute the bash script to create a new Cloud9 environment using `./cloud9.sh '<env-name>' 't3.medium' 'amazonlinux-2023-x86_64' <sleep-time>` (replace `<env-name>` with your environment name and `<sleep-time>` with the targeted delay)
     - Close `CloudShell`
     - In the search bar, search for `Cloud9` (open in a new tab)
     - Click the radio button next to your environment and click `Open in Cloud9`
